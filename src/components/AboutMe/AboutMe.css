@@ -50,4 +50,9 @@
   line-height: 17px;
   color: #000000;
   text-decoration: none;
+  transition: all 0.2s linear;
+}
+
+.about-me__link:hover {
+  opacity: 0.7;
 }

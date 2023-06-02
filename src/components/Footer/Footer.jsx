@@ -13,7 +13,7 @@ const Footer = () => {
         <div className="footer__links">
           <a
             className="footer__link"
-            href="https://github.com/Alveek"
+            href="https://practicum.yandex.ru/"
             target="_blank"
             rel="noreferrer"
           >

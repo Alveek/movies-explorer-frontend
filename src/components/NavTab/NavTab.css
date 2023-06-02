@@ -15,4 +15,9 @@
   border-radius: 10px;
   width: 96px;
   text-align: center;
+  transition: all 0.2s linear;
+}
+
+.navtab__link:hover {
+  opacity: 0.8;
 }

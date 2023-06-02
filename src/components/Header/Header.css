@@ -5,3 +5,39 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.nav__default {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.header__route {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+  color: #000;
+  transition: all 0.1s linear;
+}
+
+.header__route:hover {
+  opacity: 0.7;
+}
+
+.header__route-btn {
+  padding: 8px 20px;
+  background-color: #2be080;
+  border-radius: 3px;
+  transition: all 0.1s linear;
+}
+
+.header__route-btn:hover {
+  opacity: 0.8;
+}
+
+.header__movies {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}

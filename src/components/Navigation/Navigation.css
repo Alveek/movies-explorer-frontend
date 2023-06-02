@@ -1,19 +1,11 @@
-nav {
+/* .nav__loggedin {
   display: flex;
   align-items: center;
-  gap: 30px;
+  width: 50%;
 }
 
-.nav__route {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  text-decoration: none;
-  color: #000;
-}
-
-.nav__route-btn {
-  padding: 8px 20px;
-  background-color: #2be080;
-  border-radius: 3px;
-}
+.nav {
+  display: flex;
+  align-items: center;
+  width: 50%;
+} */
