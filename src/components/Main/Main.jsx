@@ -1,18 +1,22 @@
 import React from 'react';
-import Promo from '../Promo/Promo';
-import AboutProject from '../AboutProject/AboutProject';
-import Techs from '../Techs/Techs';
-import AboutMe from '../AboutMe/AboutMe';
-import Portfolio from '../Portfolio/Portfolio';
+import Header from '../Header/Header.jsx';
+import Footer from '../Footer/Footer.jsx';
+import Promo from '../Promo/Promo.jsx';
+import AboutProject from '../AboutProject/AboutProject.jsx';
+import Techs from '../Techs/Techs.jsx';
+import AboutMe from '../AboutMe/AboutMe.jsx';
+import Portfolio from '../Portfolio/Portfolio.jsx';
 
 const Main = () => {
   return (
     <>
+      <Header />
       <Promo />
       <AboutProject />
       <Techs />
       <AboutMe />
       <Portfolio />
+      <Footer />
     </>
   );
 };

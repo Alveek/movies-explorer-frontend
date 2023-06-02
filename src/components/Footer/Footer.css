@@ -1,0 +1,31 @@
+.footer {
+  background: #fafafa;
+  padding: 61px 70px 0;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.footer__text {
+  margin: 0;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #a0a0a0;
+  padding: 20px 0;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.footer__copyright {
+  margin-top: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: #000;
+  margin-left: 20px;
+}

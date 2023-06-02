@@ -1,24 +1,18 @@
 import React from 'react';
+import './Header.css';
 import Navagation from '../Navigation/Navigation';
 import Logo from '../../images/logo.svg';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <>
-      <Routes>
-        <Route
-          path="*"
-          element={
-            <Link className="header__route" to="/">
-              <img src={Logo} alt="logo" />
-            </Link>
-          }
-        />
-      </Routes>
+    <header className="header">
+      <Link className="header__route" to="/">
+        <img src={Logo} alt="logo" />
+      </Link>
 
       <Navagation />
-    </>
+    </header>
   );
 };
 

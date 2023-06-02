@@ -1,18 +1,33 @@
 import React from 'react';
+import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer>
-      <p>Учебный проект Яндекс.Практикум х BeatFilm.</p>
-      <hr />
-      <div>
-        <p>{new Date().getFullYear()}</p>
-        <a href="https://github.com/Alveek" target="_blank" rel="noreferrer">
-          Яндекс.Практикум
-        </a>
-        <a href="https://github.com/Alveek" target="_blank" rel="noreferrer">
-          Github
-        </a>
+    <footer className="footer">
+      <p className="footer__text">
+        Учебный проект Яндекс.Практикум х BeatFilm.
+      </p>
+
+      <div className="footer__copyright">
+        <p className="footer__year">&copy; {new Date().getFullYear()}</p>
+        <div className="footer__links">
+          <a
+            className="footer__link"
+            href="https://github.com/Alveek"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Яндекс.Практикум
+          </a>
+          <a
+            className="footer__link"
+            href="https://github.com/Alveek"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Github
+          </a>
+        </div>
       </div>
     </footer>
   );

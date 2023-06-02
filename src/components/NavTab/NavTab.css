@@ -1,0 +1,18 @@
+.navtab {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.navtab__link {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 10px 0;
+  background: #e8e8e8;
+  border-radius: 10px;
+  width: 96px;
+  text-align: center;
+}

@@ -1,31 +1,44 @@
 import React from 'react';
+import './AboutProject.css';
 
 const AboutProject = () => {
   return (
-    <>
-      <h3>О проекте</h3>
+    <section className="about-project">
+      <h3 className="about-project__title">О проекте</h3>
       <hr />
-      <div>
-        <p>Дипломный проект включал 5 этапов</p>
-        <p>
-          Составление плана, работу над бэкендом, вёрстку, добавление
-          функциональности и финальные доработки.
-        </p>
+
+      <div className="about-project__container">
+        <div className="about-project__description">
+          <p className="about-project__description-title">
+            Дипломный проект включал 5 этапов
+          </p>
+          <p className="about-project__description-text">
+            Составление плана, работу над бэкендом, вёрстку, добавление
+            функциональности и финальные доработки.
+          </p>
+        </div>
+
+        <div className="about-project__description">
+          <p className="about-project__description-title">
+            На выполнение диплома ушло 5 недель
+          </p>
+          <p className="about-project__description-text">
+            У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было
+            соблюдать, чтобы успешно защититься.
+          </p>
+        </div>
       </div>
 
-      <div>
-        <p>На выполнение диплома ушло 5 недель</p>
-        <p>
-          У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было
-          соблюдать, чтобы успешно защититься.
-        </p>
+      <div className="about-project__duration">
+        <div className="about-project__duration_one-week">1 неделя</div>
+        <div className="about-project__duration_four-weeks">4 недели</div>
       </div>
 
-      <div>
-        <span>1 неделя</span>
-        <span>4 недели</span>
+      <div className="about-project__tech">
+        <div className="about-project__tech_one-week">Back-end</div>
+        <div className="about-project__tech_four-weeks">Front-end</div>
       </div>
-    </>
+    </section>
   );
 };
 

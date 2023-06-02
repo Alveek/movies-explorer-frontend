@@ -1,0 +1,34 @@
+.portfolio {
+  padding: 100px 70px 106px;
+}
+
+.portfolio__section-title {
+  margin: 0 0 32px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  color: #a0a0a0;
+}
+
+.portfolio__links {
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio__link {
+  padding: 19px 6px 19px 0;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 50px;
+  letter-spacing: -0.04em;
+  color: #000000;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.portfolio__link:last-child {
+  border-bottom: none;
+}

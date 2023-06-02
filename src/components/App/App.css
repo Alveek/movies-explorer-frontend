@@ -8,4 +8,7 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+
+  max-width: 1280px;
+  margin: 0 auto;
 }
