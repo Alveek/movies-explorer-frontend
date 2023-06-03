@@ -1,9 +1,14 @@
 .header {
-  padding: 18px 70px;
+  padding: 0 70px;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-height: 79px;
+}
+
+.header__logo {
+  width: 38px;
 }
 
 .nav__default {
@@ -19,6 +24,10 @@
   text-decoration: none;
   color: #000;
   transition: all 0.1s linear;
+}
+
+.header__movies-route_active {
+  font-weight: 500;
 }
 
 .header__route:hover {
@@ -40,4 +49,38 @@
   display: flex;
   gap: 16px;
   align-items: center;
+  padding-left: 60px;
 }
+
+.header__movies-route {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  text-decoration: none;
+  color: #000;
+  transition: all 0.1s linear;
+}
+
+.header__movies-route_active {
+  font-weight: 500;
+}
+
+.header__route-account {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 2px solid #aaaaaa;
+  border-radius: 50px;
+  padding: 6px 11px;
+}
+
+/* 
+.header__route-icon {
+  background-image: url('../../images/icon-account.svg');
+  width: 12px;
+  height: 14px;
+} */

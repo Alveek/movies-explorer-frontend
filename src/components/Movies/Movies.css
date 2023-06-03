@@ -1,0 +1,4 @@
+.movies {
+  padding: 0 70px;
+  min-height: calc(100vh - 268px);
+}

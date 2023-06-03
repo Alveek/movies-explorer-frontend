@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Main from '../Main/Main';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
@@ -7,10 +7,17 @@ import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 function App() {
+  let location = useLocation();
+  const headerPaths = ['/', '/movies', '/saved-movies', '/profile'];
+  const footerPaths = ['/', '/movies', '/saved-movies'];
+
   return (
     <div className="App">
+      {headerPaths.includes(location.pathname) ? <Header /> : ''}
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/signup" element={<Register />} />
@@ -21,6 +28,7 @@ function App() {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+      {footerPaths.includes(location.pathname) ? <Footer /> : ''}
     </div>
   );
 }

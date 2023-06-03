@@ -1,2 +1,6 @@
 @import url('./vendor/normalize.css');
 @import url('./vendor/fonts/Inter/inter.css');
+
+html {
+  scroll-behavior: smooth;
+}

@@ -1,7 +1,11 @@
 import React from 'react';
 
 const SavedMovies = () => {
-  return <div>SavedMovies</div>;
+  return (
+    <>
+      <div>Saved movies</div>
+    </>
+  );
 };
 
 export default SavedMovies;
