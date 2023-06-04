@@ -1,4 +1,24 @@
 .movies {
   padding: 0 70px;
   min-height: calc(100vh - 268px);
+  display: flex;
+  flex-direction: column;
+}
+
+.movies__more-btn {
+  width: 320px;
+  height: 36px;
+  margin: 60px auto 78px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  border: 1px solid #e8e8e8;
+  background-color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+
+.movies__more-btn:hover {
+  background-color: #2be080;
 }
