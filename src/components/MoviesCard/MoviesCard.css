@@ -4,29 +4,38 @@
   padding: 0;
   max-width: 364px;
   max-height: 281px;
+  overflow: hidden;
 
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
   border-radius: 6px;
   background: #fdfdfd;
 }
 
-.moviecard__details {
+.moviescard__image {
+  vertical-align: bottom;
+  transition: all 0.16s linear;
+  object-fit: cover;
+}
+
+.moviescard__image:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+  transform-origin: 50% 100%;
+}
+
+.moviescard__details {
   padding: 16px;
   position: relative;
 }
 
-.moviecard__image {
-  vertical-align: bottom;
-}
-
-.moviecard__name {
+.moviescard__name {
   margin: 0 0 17px;
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;
 }
 
-.moviecard__duration {
+.moviescard__duration {
   margin: 0;
   font-weight: 400;
   font-size: 11px;
@@ -34,7 +43,7 @@
   color: #a0a0a0;
 }
 
-.moviecard__like-btn {
+.moviescard__like-btn {
   background: no-repeat center/contain url('../../images/icon-heart.svg');
   padding: 0;
   margin: 0;
@@ -47,6 +56,24 @@
   right: 24px;
 }
 
-.moviecard__like-btn_liked {
+.moviescard__like-btn_liked {
   background: no-repeat center/contain url('../../images/icon-heart-liked.svg');
+}
+
+.moviescard__delete-btn {
+  background: no-repeat center/contain url('../../images/icon-close.svg');
+  display: none;
+  padding: 0;
+  margin: 0;
+  width: 14px;
+  height: 12px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 19px;
+  right: 24px;
+}
+
+.moviescard__container:hover .moviescard__delete-btn {
+  display: block;
 }

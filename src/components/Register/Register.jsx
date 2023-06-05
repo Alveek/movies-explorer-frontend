@@ -1,74 +1,106 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useFormAndValidation } from '../../hooks/useFormAndValidation';
+import Logo from '../../images/logo.svg';
+import './Register.css';
 
 const Register = () => {
+  const { values, handleChange, errors, isValid } = useFormAndValidation();
+  const onRegister = (val) => {
+    console.log(val);
+  };
+
   return (
-    <form className="auth-form">
-      <p className="auth-form__welcome">Добро пожаловать!</p>
+    <section className="register-page">
+      <Link className="register-page__route" to="/">
+        <img className="register-page__logo" src={Logo} alt="logo" />
+      </Link>
 
-      <input
-        className="auth-form__input form__input_user_email"
-        id="user-email-input"
-        name="email"
-        type="email"
-        placeholder="Имя"
-        minLength="2"
-        maxLength="40"
-        required
-      />
-      {/* <span
-        className={`form__input-error auth-form__input-error ${
-          isValid ? '' : 'form__input-error_active'
-        }`}
+      <h1 className="register-page__title">Добро пожаловать!</h1>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          onRegister(values);
+        }}
+        className="form"
       >
-        {errors.email}
-      </span> */}
+        <label className="form__label" htmlFor="user-name-input">
+          Имя
+        </label>
+        <input
+          className="form__input"
+          id="user-name-input"
+          name="name"
+          value={values.name || ''}
+          onChange={handleChange}
+          type="text"
+          minLength="2"
+          maxLength="40"
+          required
+        />
+        <span
+          className={`form__input-error ${
+            isValid ? '' : 'form__input-error_active'
+          }`}
+        >
+          {errors.name}
+        </span>
 
-      <input
-        className="auth-form__input form__input_user_email"
-        id="user-email-input"
-        name="email"
-        type="email"
-        placeholder="Email"
-        minLength="2"
-        maxLength="40"
-        required
-      />
-      {/* <span
-        className={`form__input-error auth-form__input-error ${
-          isValid ? '' : 'form__input-error_active'
-        }`}
-      >
-        {errors.email}
-      </span> */}
-      <input
-        className="auth-form__input form__input_user_password"
-        id="user-password-input"
-        name="password"
-        type="password"
-        placeholder="Пароль"
-        minLength="6"
-        maxLength="200"
-        required
-      />
-      {/* <span
-        className={`form__input-error auth-form__input-error ${
-          isValid ? '' : 'form__input-error_active'
-        }`}
-      >
-        {errors.password}
-      </span> */}
-      <button type="submit" className="auth-form__submit-button">
-        Зарегистрироваться
-      </button>
+        <label className="form__label" htmlFor="user-email-input">
+          E-mail
+        </label>
+        <input
+          className="form__input"
+          id="user-email-input"
+          name="email"
+          value={values.email || ''}
+          onChange={handleChange}
+          type="email"
+          minLength="2"
+          maxLength="40"
+          required
+        />
+        <span
+          className={`form__input-error ${
+            isValid ? '' : 'form__input-error_active'
+          }`}
+        >
+          {errors.email}
+        </span>
 
-      <div className="auth-form__text">
-        <span>Уже зарегистрированы? </span>
-        <Link to="/signin" className="auth-form__link">
-          Войти
-        </Link>
-      </div>
-    </form>
+        <label className="form__label" htmlFor="user-password-input">
+          Пароль
+        </label>
+        <input
+          className="form__input"
+          id="user-password-input"
+          name="password"
+          value={values.password || ''}
+          onChange={handleChange}
+          type="password"
+          minLength="6"
+          maxLength="200"
+          required
+        />
+        <span
+          className={`form__input-error ${
+            isValid ? '' : 'form__input-error_active'
+          }`}
+        >
+          {errors.password}
+        </span>
+        <button type="submit" className="form__btn">
+          Зарегистрироваться
+        </button>
+
+        <div className="register-page__text">
+          <span>Уже зарегистрированы? </span>
+          <Link to="/signin" className="register-page__link">
+            Войти
+          </Link>
+        </div>
+      </form>
+    </section>
   );
 };
 

@@ -1,0 +1,35 @@
+.register-page {
+  max-width: 396px;
+  padding-top: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.register-page-route {
+  width: 38px;
+}
+
+.register-page__title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 37px 0 39px;
+}
+
+.register-page__text {
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #a0a0a0;
+}
+
+.register-page__link {
+  color: #2be080;
+  text-decoration: none;
+}
+
+.form__btn {
+  margin-top: 129px;
+}
