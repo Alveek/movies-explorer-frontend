@@ -20,7 +20,7 @@
   transition: transform 0.3s ease-in-out;
   z-index: 1;
   display: grid;
-  grid-template-rows: 159px min-content;
+  /* grid-template-rows: 159px min-content; */
 }
 
 .drawer__container.drawer_open {
@@ -53,3 +53,9 @@
 .drawer__close-btn:focus {
   outline: 2px solid black;
 }
+
+/* @media screen and (max-width: 768px) {
+  .drawer__container {
+    grid-template-rows: 0;
+  }
+} */
