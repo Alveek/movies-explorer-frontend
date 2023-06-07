@@ -12,7 +12,7 @@ const MoviesCardList = ({ movies }) => {
   return (
     <ul className="movies-cardlist">
       {movies?.map((movie) => {
-        return <MoviesCard movie={movie} />;
+        return <MoviesCard key={movie.movieId} movie={movie} />;
       })}
     </ul>
   );

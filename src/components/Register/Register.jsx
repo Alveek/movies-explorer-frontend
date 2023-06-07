@@ -22,74 +22,81 @@ const Register = () => {
           e.preventDefault();
           onRegister(values);
         }}
-        className="form"
+        className="register-form"
       >
-        <label className="form__label" htmlFor="user-name-input">
-          Имя
-        </label>
-        <input
-          className="form__input"
-          id="user-name-input"
-          name="name"
-          value={values.name || ''}
-          onChange={handleChange}
-          type="text"
-          minLength="2"
-          maxLength="40"
-          required
-        />
-        <span
-          className={`form__input-error ${
-            isValid ? '' : 'form__input-error_active'
-          }`}
-        >
-          {errors.name}
-        </span>
+        <div className="register-form__input-field">
+          <label className="register-form__label" htmlFor="user-name-input">
+            Имя
+          </label>
+          <input
+            className="register-form__input"
+            id="user-name-input"
+            name="name"
+            value={values.name || ''}
+            onChange={handleChange}
+            type="text"
+            minLength="2"
+            maxLength="40"
+            required
+          />
+          <span
+            className={`register-form__input-error ${
+              isValid ? '' : 'register-form__input-error_active'
+            }`}
+          >
+            {errors.name}
+          </span>
+        </div>
 
-        <label className="form__label" htmlFor="user-email-input">
-          E-mail
-        </label>
-        <input
-          className="form__input"
-          id="user-email-input"
-          name="email"
-          value={values.email || ''}
-          onChange={handleChange}
-          type="email"
-          minLength="2"
-          maxLength="40"
-          required
-        />
-        <span
-          className={`form__input-error ${
-            isValid ? '' : 'form__input-error_active'
-          }`}
-        >
-          {errors.email}
-        </span>
+        <div className="register-form__input-field">
+          <label className="register-form__label" htmlFor="user-email-input">
+            E-mail
+          </label>
+          <input
+            className="register-form__input"
+            id="user-email-input"
+            name="email"
+            value={values.email || ''}
+            onChange={handleChange}
+            type="email"
+            minLength="2"
+            maxLength="40"
+            required
+          />
+          <span
+            className={`register-form__input-error ${
+              isValid ? '' : 'register-form__input-error_active'
+            }`}
+          >
+            {errors.email}
+          </span>
+        </div>
 
-        <label className="form__label" htmlFor="user-password-input">
-          Пароль
-        </label>
-        <input
-          className="form__input"
-          id="user-password-input"
-          name="password"
-          value={values.password || ''}
-          onChange={handleChange}
-          type="password"
-          minLength="6"
-          maxLength="200"
-          required
-        />
-        <span
-          className={`form__input-error ${
-            isValid ? '' : 'form__input-error_active'
-          }`}
-        >
-          {errors.password}
-        </span>
-        <button type="submit" className="form__btn">
+        <div className="register-form__input-field">
+          <label className="register-form__label" htmlFor="user-password-input">
+            Пароль
+          </label>
+          <input
+            className="register-form__input"
+            id="user-password-input"
+            name="password"
+            value={values.password || ''}
+            onChange={handleChange}
+            type="password"
+            minLength="6"
+            maxLength="200"
+            required
+          />
+          <span
+            className={`register-form__input-error ${
+              isValid ? '' : 'register-form__input-error_active'
+            }`}
+          >
+            {errors.password}
+          </span>
+        </div>
+
+        <button type="submit" className="register-form__btn">
           Зарегистрироваться
         </button>
 

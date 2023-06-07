@@ -74,14 +74,13 @@ const Profile = () => {
         >
           Редактировать
         </button>
-
-        <button
-          type="submit"
-          className="profile-form__button profile-form__button-signout"
-        >
-          Выйти из аккаунта
-        </button>
       </form>
+      <button
+        type="submit"
+        className="profile-form__button profile-form__button-signout"
+      >
+        Выйти из аккаунта
+      </button>
     </section>
   );
 };

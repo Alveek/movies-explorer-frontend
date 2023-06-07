@@ -1,15 +1,18 @@
 .header {
   padding: 0 70px;
-  margin-bottom: 20px;
+  margin-bottom: 23px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 79px;
+  min-height: 76px;
 }
 
 .header__logo {
   width: 38px;
 }
+
+/*  
+
 
 .nav__default {
   display: flex;
@@ -76,7 +79,7 @@
   border: 2px solid #aaaaaa;
   border-radius: 50px;
   padding: 6px 11px;
-}
+} */
 
 /* 
 .header__route-icon {

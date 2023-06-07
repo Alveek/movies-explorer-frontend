@@ -1,22 +1,17 @@
 .not-found-page {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
   position: relative;
   min-height: 100vh;
 }
 
 .not-found-page__container {
   position: absolute;
-  top: 63%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -25%);
   text-align: center;
 }
 
 .not-found-page__title {
-  /* margin: 184px 0 0; */
   margin: 0;
   font-weight: 400;
   font-size: 140px;
@@ -32,7 +27,6 @@
 }
 
 .not-found-page__back-btn {
-  /* margin-top: 183px; */
   color: #2be080;
   font-weight: 400;
   font-size: 14px;

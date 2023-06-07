@@ -24,50 +24,55 @@ const Login = () => {
         }}
         className="form"
       >
-        <label className="form__label" htmlFor="user-email-input">
-          E-mail
-        </label>
-        <input
-          className="form__input"
-          id="user-email-input"
-          name="email"
-          value={values.email || ''}
-          // value="pochta@yandex.ru"
-          onChange={handleChange}
-          type="email"
-          minLength="2"
-          maxLength="40"
-          required
-        />
-        <span
-          className={`form__input-error ${
-            isValid ? '' : 'form__input-error_active'
-          }`}
-        >
-          {errors.email}
-        </span>
+        <div className="form__input-field">
+          <label className="form__label" htmlFor="user-email-input">
+            E-mail
+          </label>
+          <input
+            className="form__input"
+            id="user-email-input"
+            name="email"
+            value={values.email || ''}
+            // value="pochta@yandex.ru"
+            onChange={handleChange}
+            type="email"
+            minLength="2"
+            maxLength="40"
+            required
+          />
+          <span
+            className={`form__input-error ${
+              isValid ? '' : 'form__input-error_active'
+            }`}
+          >
+            {errors.email}
+          </span>
+        </div>
 
-        <label className="form__label" htmlFor="user-password-input">
-          Пароль
-        </label>
-        <input
-          className="form__input"
-          id="user-password-input"
-          name="password"
-          value={values.password || ''}
-          onChange={handleChange}
-          type="password"
-          minLength="6"
-          maxLength="200"
-          required
-        />
-        <span
-          className={`form__input-error ${
-            isValid ? '' : 'form__input-error_active'
-          }`}
-        >
-          {errors.password}
-        </span>
+        <div className="form__input-field">
+          <label className="form__label" htmlFor="user-password-input">
+            Пароль
+          </label>
+          <input
+            className="form__input"
+            id="user-password-input"
+            name="password"
+            value={values.password || ''}
+            onChange={handleChange}
+            type="password"
+            minLength="6"
+            maxLength="200"
+            required
+          />
+          <span
+            className={`form__input-error ${
+              isValid ? '' : 'form__input-error_active'
+            }`}
+          >
+            {errors.password}
+          </span>
+        </div>
+
         <button type="submit" className="form__btn">
           Войти
         </button>

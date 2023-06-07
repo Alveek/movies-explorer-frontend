@@ -1,6 +1,6 @@
 .login-page {
   max-width: 396px;
-  padding-top: 70px;
+  padding-top: 73px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,6 +9,7 @@
 
 .login-page__route {
   width: 38px;
+  height: 38px;
 }
 
 .login-page__title {
@@ -69,6 +70,10 @@
 .login-page__link {
   color: #2be080;
   text-decoration: none;
+}
+
+.form__input-field {
+  position: relative;
 }
 
 .form__input-error {
