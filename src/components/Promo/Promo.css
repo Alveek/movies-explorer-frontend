@@ -19,3 +19,33 @@
   padding-top: 158px;
   padding-bottom: 150px;
 }
+
+@media screen and (max-width: 768px) {
+  .promo {
+    margin: 0 20px;
+  }
+
+  .promo__title {
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 52px;
+    max-width: 680px;
+    padding-top: 351px;
+    padding-bottom: 314px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .promo {
+    margin: 0 14px;
+  }
+
+  .promo__title {
+    font-weight: 400;
+    font-size: 29px;
+    line-height: 37px;
+    max-width: 680px;
+    padding-top: 214px;
+    padding-bottom: 212px;
+  }
+}

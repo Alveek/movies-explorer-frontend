@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import './Drawer.css';
 import Navigation from '../Navigation/Navigation';
 
-const Drawer = () => {
+const Drawer = ({ isLoggedIn }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -36,7 +36,7 @@ const Drawer = () => {
       >
         <button className="drawer__close-btn" onClick={closeDrawer}></button>
 
-        <Navigation />
+        <Navigation isLoggedIn={isLoggedIn} />
       </div>
     </div>
   );

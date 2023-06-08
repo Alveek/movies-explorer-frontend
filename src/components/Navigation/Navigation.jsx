@@ -3,17 +3,11 @@ import './Navigation.css';
 import { useLocation, Link } from 'react-router-dom';
 import AccoutIcon from '../../images/icon-account.svg';
 
-// import Drawer from '../Drawer/Drawer';
-
-const Navigation = () => {
-  // eslint-disable-next-line no-unused-vars
-  const [isLoggedIn, setIsLoggedIn] = React.useState(true);
+const Navigation = ({ isLoggedIn }) => {
   let location = useLocation();
 
   return (
     <nav className="nav">
-      {/* <Drawer /> */}
-
       {isLoggedIn ? (
         <>
           <div className="nav__movies">

@@ -12,8 +12,8 @@ const Main = () => {
       <Promo />
       <AboutProject />
       <Techs />
-      <AboutMe />
-      <Portfolio />
+      {/* <AboutMe /> */}
+      {/* <Portfolio /> */}
     </>
   );
 };

@@ -21,3 +21,19 @@
 .navtab__link:hover {
   opacity: 0.8;
 }
+
+@media screen and (max-width: 450px) {
+  .navtab {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+
+  .navtab__link {
+    font-size: 10px;
+    line-height: 16px;
+    padding: 5px 0;
+    width: 82px;
+    border-radius: 6px;
+  }
+}

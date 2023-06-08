@@ -11,3 +11,17 @@
   max-width: 1280px;
   margin: 0 auto;
 }
+
+.temp-login {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+  display: flex;
+  gap: 10px;
+  background: lightcoral;
+  padding: 2px 4px;
+  opacity: 0.5;
+  color: #fff;
+  font-size: 10px;
+}

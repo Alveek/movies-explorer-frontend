@@ -69,3 +69,99 @@
 .about-project__tech_four-weeks {
   width: 80%;
 }
+
+@media screen and (max-width: 768px) {
+  .about-project {
+    margin: 90px 50px;
+  }
+
+  .about-project__description-title {
+    margin-bottom: 22px;
+  }
+
+  .about-project__description-text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-project__container {
+    margin-bottom: 81px;
+  }
+
+  .about-project__duration_one-week {
+    width: 21%;
+  }
+
+  .about-project__duration_four-weeks {
+    width: 79%;
+  }
+
+  .about-project__tech_one-week {
+    width: 21%;
+  }
+
+  .about-project__tech_four-weeks {
+    width: 79%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .about-project {
+    margin: 70px 18px;
+  }
+
+  .about-project__title {
+    margin: 0 0 27px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.04em;
+  }
+
+  .about-project__description-title {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 15px;
+  }
+
+  .about-project__container {
+    display: grid;
+    gap: 28px;
+    margin-top: 42px;
+    margin-bottom: 49px;
+  }
+
+  .about-project__description-text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-project__tech {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .about-project__duration {
+    font-size: 11px;
+    line-height: 13px;
+    margin-bottom: 10px;
+  }
+
+  .about-project__duration_one-week {
+    width: 36%;
+    padding: 11px 0;
+  }
+
+  .about-project__duration_four-weeks {
+    width: 64%;
+    padding: 11px 0;
+  }
+
+  .about-project__tech_one-week {
+    width: 36%;
+  }
+
+  .about-project__tech_four-weeks {
+    width: 64%;
+  }
+}

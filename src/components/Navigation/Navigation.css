@@ -85,7 +85,6 @@
     justify-content: center;
     grid-template-columns: min-content;
     grid-template-rows: 10% 72% 12%;
-    min-height: 100vh;
     width: 100%;
   }
 
@@ -99,8 +98,8 @@
 
   .nav__route {
     font-weight: 500;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 12px;
+    line-height: 16px;
     text-decoration: none;
     position: relative;
   }
@@ -110,7 +109,6 @@
   }
 
   .nav__route_active::after {
-    /* font-weight: 500; */
     content: '';
     position: absolute;
     border-bottom: 2px solid black;
@@ -130,5 +128,25 @@
     padding: 6px 11px;
     align-self: start;
     grid-row: 3/-1;
+  }
+
+  .nav__default {
+    height: 12px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .nav__route-btn {
+    padding: 7px 11px;
+    background-color: #2be080;
+    border-radius: 3px;
+    transition: all 0.1s linear;
+    margin-left: 14px;
+  }
+
+  .nav__route {
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 16px;
   }
 }

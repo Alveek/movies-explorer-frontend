@@ -6,10 +6,7 @@ import { Link } from 'react-router-dom';
 import Drawer from '../Drawer/Drawer';
 import useResize from '../../hooks/useResize.js';
 
-const Header = () => {
-  // eslint-disable-next-line no-unused-vars
-  const [isLoggedIn, setIsLoggedIn] = React.useState(true);
-
+const Header = ({ isLoggedIn }) => {
   const size = useResize();
   return (
     <header className="header">
@@ -18,11 +15,11 @@ const Header = () => {
       </Link>
 
       {size.width > 768 ? (
-        <Navigation />
+        <Navigation isLoggedIn={isLoggedIn} />
       ) : isLoggedIn ? (
-        <Drawer />
+        <Drawer isLoggedIn={isLoggedIn} />
       ) : (
-        <Navigation />
+        <Navigation isLoggedIn={isLoggedIn} />
       )}
     </header>
   );
