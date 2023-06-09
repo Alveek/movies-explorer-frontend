@@ -43,3 +43,36 @@
     line-height: 16px;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .footer {
+    padding: 30px 10px 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .footer__text {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .footer__copyright {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .footer__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+  }
+
+  .footer__link {
+    margin-left: 0;
+  }
+}

@@ -9,7 +9,6 @@
 .filter-checkbox__input {
   height: 0;
   width: 0;
-  /* visibility: hidden; */
 }
 
 .filter-checkbox:focus-within .filter-checkbox__label {
@@ -54,4 +53,27 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
+}
+
+@media screen and (max-width: 768px) {
+  .filter-checkbox {
+    padding-left: 19px;
+  }
+}
+
+/* position: relative находится в search-form */
+@media screen and (max-width: 600px) {
+  .filter-checkbox {
+    position: absolute;
+    top: 107px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .filter-checkbox__text {
+    padding-left: 14px;
+    font-size: 11px;
+  }
 }

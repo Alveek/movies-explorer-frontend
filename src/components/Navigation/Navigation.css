@@ -84,7 +84,7 @@
     align-items: center;
     justify-content: center;
     grid-template-columns: min-content;
-    grid-template-rows: 10% 72% 12%;
+    grid-template-rows: 11% 76% 13%;
     width: 100%;
   }
 
@@ -102,6 +102,15 @@
     line-height: 16px;
     text-decoration: none;
     position: relative;
+  }
+
+  .nav__route-drawer {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-decoration: none;
+    position: relative;
+    color: #000;
   }
 
   .nav__route-main {
@@ -136,6 +145,10 @@
 }
 
 @media screen and (max-width: 450px) {
+  .nav {
+    grid-template-rows: 12% 77% 10%;
+  }
+
   .nav__route-btn {
     padding: 7px 11px;
     background-color: #2be080;
@@ -148,5 +161,9 @@
     font-weight: 500;
     font-size: 10px;
     line-height: 16px;
+  }
+
+  .nav__movies {
+    gap: 24px;
   }
 }

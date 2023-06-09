@@ -45,3 +45,28 @@
     font-size: 28px;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .portfolio {
+    padding: 70px 14px 69px;
+  }
+
+  .portfolio__links {
+    display: grid;
+  }
+
+  .portfolio__link {
+    font-size: 18px;
+    padding: 0 5px 9px 0;
+    margin-bottom: 9px;
+  }
+
+  .portfolio__section-title {
+    margin: 0 0 28px;
+    font-size: 14px;
+  }
+
+  .portfolio__link-img {
+    width: 11px;
+  }
+}

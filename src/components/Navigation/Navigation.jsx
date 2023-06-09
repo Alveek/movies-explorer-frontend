@@ -5,6 +5,7 @@ import AccoutIcon from '../../images/icon-account.svg';
 
 const Navigation = ({ isLoggedIn }) => {
   let location = useLocation();
+  const routeClass = isLoggedIn ? 'nav__route-drawer ' : 'nav__route ';
 
   return (
     <nav className="nav">
@@ -12,7 +13,7 @@ const Navigation = ({ isLoggedIn }) => {
         <>
           <div className="nav__movies">
             <Link
-              className={`nav__route nav__route-main${
+              className={`${routeClass} nav__route-main${
                 location.pathname === '/' ? ' nav__route_active' : ''
               }`}
               to="/"
@@ -20,7 +21,7 @@ const Navigation = ({ isLoggedIn }) => {
               Главная
             </Link>
             <Link
-              className={`nav__route nav__movies-route${
+              className={`${routeClass} nav__movies-route${
                 location.pathname === '/movies' ? ' nav__route_active' : ''
               }`}
               to="/movies"
@@ -29,7 +30,7 @@ const Navigation = ({ isLoggedIn }) => {
             </Link>
 
             <Link
-              className={`nav__route nav__movies-route${
+              className={`${routeClass} nav__movies-route${
                 location.pathname === '/saved-movies'
                   ? ' nav__route_active'
                   : ''
@@ -40,7 +41,7 @@ const Navigation = ({ isLoggedIn }) => {
             </Link>
           </div>
 
-          <Link className="nav__route nav__route-account" to="/profile">
+          <Link className={`nav__route nav__route-account`} to="/profile">
             <img src={AccoutIcon} alt="" /> Аккаунт
           </Link>
         </>

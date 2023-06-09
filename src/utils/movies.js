@@ -16,7 +16,8 @@ export const moviesData = [
     movieId: 3,
     nameRU: 'В погоне за Бенкси',
     duration: 102,
-    thumbnail: 'https://i.ibb.co/6w1n7zk/pic-COLOR-pic-8.jpg'
+    thumbnail: 'https://i.ibb.co/6w1n7zk/pic-COLOR-pic-8.jpg',
+    isLiked: true
   },
   {
     movieId: 4,

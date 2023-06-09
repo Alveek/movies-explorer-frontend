@@ -14,7 +14,8 @@ const Portfolio = () => {
           target="_blank"
           rel="noreferrer"
         >
-          <span>Статичный сайт</span> <img src={ArrowLink} alt="arrow" />
+          <span>Статичный сайт</span>{' '}
+          <img className="portfolio__link-img" src={ArrowLink} alt="arrow" />
         </a>
 
         <a
@@ -23,7 +24,8 @@ const Portfolio = () => {
           target="_blank"
           rel="noreferrer"
         >
-          <span>Адаптивный сайт</span> <img src={ArrowLink} alt="arrow" />
+          <span>Адаптивный сайт</span>{' '}
+          <img className="portfolio__link-img" src={ArrowLink} alt="arrow" />
         </a>
 
         <a
@@ -33,7 +35,7 @@ const Portfolio = () => {
           rel="noreferrer"
         >
           <span>Одностраничное приложение</span>{' '}
-          <img src={ArrowLink} alt="arrow" />
+          <img className="portfolio__link-img" src={ArrowLink} alt="arrow" />
         </a>
       </div>
     </section>

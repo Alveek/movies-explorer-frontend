@@ -7,3 +7,18 @@
   grid-template-columns: repeat(auto-fit, minmax(auto, 364px));
   justify-content: center;
 }
+
+@media screen and (max-width: 920px) {
+  .movies-cardlist {
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(auto, 339px));
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .movies-cardlist {
+    margin: 51px 0 0;
+    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(auto, 300px));
+  }
+}

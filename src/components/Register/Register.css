@@ -88,3 +88,37 @@ register-form__input-field {
 .register-form__input-error_active {
   color: #ee3465;
 }
+
+@media screen and (max-width: 768px) {
+  .register-page {
+    padding-top: 0px;
+    min-height: 100vh;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .register-page {
+    padding-top: 56px;
+    min-height: 100vh;
+    max-width: 260px;
+    justify-content: start;
+  }
+  .register-page__route {
+    align-self: center;
+  }
+
+  .register-page__title {
+    margin: 50px 0 79px;
+    text-align: center;
+  }
+
+  .register-form__btn {
+    margin: 217px 0 16px;
+  }
+
+  .register-page__text {
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 30px;
+  }
+}
