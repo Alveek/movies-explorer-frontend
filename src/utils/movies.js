@@ -10,7 +10,7 @@ export const moviesData = [
     movieId: 2,
     nameRU: 'Киноальманах «100 лет дизайна»',
     duration: 63,
-    thumbnail: 'https://i.ibb.co/Yt0b06S/pic-COLOR-pic-4.jpg'
+    thumbnail: 'https://i.ibb.co/GQG1YJ9/pic-COLOR-pic-11.jpg'
   },
   {
     movieId: 3,
@@ -61,7 +61,7 @@ export const moviesData = [
     movieId: 10,
     nameRU: 'Соберись перед прыжком',
     duration: 80,
-    thumbnail: 'https://i.ibb.co/QQFMRrZ/pic-COLOR-pic-3.jpg',
+    thumbnail: 'https://i.ibb.co/mqKBL8f/pic-COLOR-pic-9.jpg',
     isLiked: true
   },
   {

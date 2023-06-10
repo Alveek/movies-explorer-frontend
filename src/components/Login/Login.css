@@ -1,6 +1,6 @@
 .login-page {
   max-width: 396px;
-  padding-top: 73px;
+  padding: 73px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -61,7 +61,7 @@
   font-size: 14px;
   line-height: 17px;
   min-height: 45px;
-  margin: 198px 0 16px;
+  margin: 55px 0 16px;
   cursor: pointer;
 }
 
@@ -126,7 +126,7 @@
   }
 
   .form__btn {
-    margin: 286px 0 16px;
+    margin: 55px 0 16px;
   }
 
   .login-page__text {

@@ -34,6 +34,10 @@
   cursor: pointer;
 }
 
+.search__form-button:hover {
+  opacity: 0.8;
+}
+
 .search__form-button:focus {
   outline: 2px solid black;
   border-radius: 50px;
