@@ -30,13 +30,21 @@ const AboutProject = () => {
       </div>
 
       <div className="about-project__duration">
-        <div className="about-project__duration_one-week">1 неделя</div>
-        <div className="about-project__duration_four-weeks">4 недели</div>
+        <div className="about-project__duration-weeks about-project__duration-weeks_one">
+          1 неделя
+        </div>
+        <div className="about-project__duration-weeks about-project__duration-weeks_four">
+          4 недели
+        </div>
       </div>
 
       <div className="about-project__tech">
-        <div className="about-project__tech_one-week">Back-end</div>
-        <div className="about-project__tech_four-weeks">Front-end</div>
+        <div className="about-project__tech-weeks about-project__tech-weeks_one">
+          Back-end
+        </div>
+        <div className="about-project__tech-weeks about-project__tech-weeks_four">
+          Front-end
+        </div>
       </div>
     </section>
   );

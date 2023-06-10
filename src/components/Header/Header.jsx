@@ -11,7 +11,7 @@ const Header = ({ isLoggedIn }) => {
   return (
     <header className="header">
       <Link className="header__route" to="/">
-        <img className="header__logo" src={Logo} alt="logo" />
+        <img className="header__logo" src={Logo} alt="Логотип" />
       </Link>
 
       {size.width > 768 ? (

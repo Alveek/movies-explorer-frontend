@@ -13,7 +13,7 @@ const Login = () => {
   return (
     <section className="login-page">
       <Link className="login-page__route" to="/">
-        <img className="login-page__logo" src={Logo} alt="logo" />
+        <img className="login-page__logo" src={Logo} alt="Логотип" />
       </Link>
 
       <h1 className="login-page__title">Рады видеть!</h1>
@@ -33,9 +33,9 @@ const Login = () => {
             id="user-email-input"
             name="email"
             value={values.email || ''}
-            // value="pochta@yandex.ru"
             onChange={handleChange}
             type="email"
+            placeholder="Введите почту"
             minLength="2"
             maxLength="40"
             required
@@ -60,6 +60,7 @@ const Login = () => {
             value={values.password || ''}
             onChange={handleChange}
             type="password"
+            placeholder="Введите пароль"
             minLength="6"
             maxLength="200"
             required

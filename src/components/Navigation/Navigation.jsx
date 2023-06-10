@@ -2,10 +2,15 @@ import React from 'react';
 import './Navigation.css';
 import { useLocation, Link } from 'react-router-dom';
 import AccoutIcon from '../../images/icon-account.svg';
+import useResize from '../../hooks/useResize';
 
 const Navigation = ({ isLoggedIn }) => {
   let location = useLocation();
-  const routeClass = isLoggedIn ? 'nav__route-drawer ' : 'nav__route ';
+  let size = useResize();
+
+  const routeClass = size.width <= 786 ? 'nav__route-drawer ' : 'nav__route ';
+  const activeRouteClass =
+    size.width <= 786 ? ' nav__route-drawer_active ' : ' nav__route_active ';
 
   return (
     <nav className="nav">
@@ -14,15 +19,16 @@ const Navigation = ({ isLoggedIn }) => {
           <div className="nav__movies">
             <Link
               className={`${routeClass} nav__route-main${
-                location.pathname === '/' ? ' nav__route_active' : ''
+                location.pathname === '/' ? activeRouteClass : ''
               }`}
               to="/"
             >
               Главная
             </Link>
+
             <Link
               className={`${routeClass} nav__movies-route${
-                location.pathname === '/movies' ? ' nav__route_active' : ''
+                location.pathname === '/movies' ? activeRouteClass : ''
               }`}
               to="/movies"
             >
@@ -31,9 +37,7 @@ const Navigation = ({ isLoggedIn }) => {
 
             <Link
               className={`${routeClass} nav__movies-route${
-                location.pathname === '/saved-movies'
-                  ? ' nav__route_active'
-                  : ''
+                location.pathname === '/saved-movies' ? activeRouteClass : ''
               }`}
               to="/saved-movies"
             >
@@ -42,7 +46,7 @@ const Navigation = ({ isLoggedIn }) => {
           </div>
 
           <Link className={`nav__route nav__route-account`} to="/profile">
-            <img src={AccoutIcon} alt="" /> Аккаунт
+            <img src={AccoutIcon} alt="Изображение иконки аккаунта" /> Аккаунт
           </Link>
         </>
       ) : (

@@ -1,4 +1,4 @@
-.moviescard__container {
+.moviescard {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -79,7 +79,7 @@
 }
 
 @media screen and (max-width: 920px) {
-  .moviescard__container {
+  .moviescard {
     max-width: 339px;
     max-height: 262px;
   }
@@ -99,7 +99,7 @@
 }
 
 @media screen and (max-width: 450px) {
-  .moviescard__container {
+  .moviescard {
     max-width: 300px;
     max-height: 327px;
   }

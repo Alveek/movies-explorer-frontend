@@ -39,7 +39,7 @@
   max-width: 460px;
 }
 
-.tech__badges {
+.techs__badges {
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -51,7 +51,7 @@
   letter-spacing: -0.04em;
 }
 
-.tech__badge {
+.techs__badge {
   width: 90px;
   padding: 21px 0;
   text-align: center;
@@ -74,11 +74,11 @@
     line-height: 18px;
   }
 
-  .tech__badge {
+  .techs__badge {
     width: 84px;
   }
 
-  .tech__badges {
+  .techs__badges {
     font-size: 12px;
     line-height: 15px;
   }
@@ -112,7 +112,7 @@
     line-height: 16px;
   }
 
-  .tech__badges {
+  .techs__badges {
     font-size: 12px;
     line-height: 15px;
     display: grid;
@@ -122,7 +122,7 @@
 }
 
 @media screen and (max-width: 320px) {
-  .tech__badges {
+  .techs__badges {
     grid-template-columns: min-content min-content;
   }
 }

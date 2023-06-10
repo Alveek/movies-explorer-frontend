@@ -15,14 +15,14 @@ const Techs = () => {
         </p>
       </div>
 
-      <div className="tech__badges">
-        <span className="tech__badge">HTML</span>
-        <span className="tech__badge">CSS</span>
-        <span className="tech__badge">JS</span>
-        <span className="tech__badge">React</span>
-        <span className="tech__badge">Git</span>
-        <span className="tech__badge">Express.js</span>
-        <span className="tech__badge">mongoDB</span>
+      <div className="techs__badges">
+        <span className="techs__badge">HTML</span>
+        <span className="techs__badge">CSS</span>
+        <span className="techs__badge">JS</span>
+        <span className="techs__badge">React</span>
+        <span className="techs__badge">Git</span>
+        <span className="techs__badge">Express.js</span>
+        <span className="techs__badge">mongoDB</span>
       </div>
     </section>
   );

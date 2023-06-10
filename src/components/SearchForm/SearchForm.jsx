@@ -5,16 +5,16 @@ import IconFind from '../../images/find.svg';
 
 const SearchForm = () => {
   return (
-    <div className="search-form__container">
-      <form className="search-form">
+    <div className="search">
+      <form className="search__form">
         <input
-          className="search-form__input"
+          className="search__form-input"
           type="search"
           placeholder="Фильм"
         />
 
-        <button type="submit" className="search-form__button">
-          <img src={IconFind} alt="" />
+        <button type="submit" className="search__form-button">
+          <img src={IconFind} alt="Изображение иконки поиска" />
         </button>
         <FilterCheckbox />
       </form>

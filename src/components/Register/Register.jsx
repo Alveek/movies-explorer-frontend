@@ -13,10 +13,11 @@ const Register = () => {
   return (
     <section className="register-page">
       <Link className="register-page__route" to="/">
-        <img className="register-page__logo" src={Logo} alt="logo" />
+        <img className="register-page__logo" src={Logo} alt="Лого" />
       </Link>
 
       <h1 className="register-page__title">Добро пожаловать!</h1>
+
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -35,6 +36,7 @@ const Register = () => {
             value={values.name || ''}
             onChange={handleChange}
             type="text"
+            placeholder="Введите имя"
             minLength="2"
             maxLength="40"
             required
@@ -59,6 +61,7 @@ const Register = () => {
             value={values.email || ''}
             onChange={handleChange}
             type="email"
+            placeholder="Введите почту"
             minLength="2"
             maxLength="40"
             required
@@ -83,6 +86,7 @@ const Register = () => {
             value={values.password || ''}
             onChange={handleChange}
             type="password"
+            placeholder="Введите пароль"
             minLength="6"
             maxLength="200"
             required
@@ -96,7 +100,11 @@ const Register = () => {
           </span>
         </div>
 
-        <button type="submit" className="register-form__btn">
+        <button
+          type="submit"
+          className="register-form__btn"
+          disabled={!isValid}
+        >
           Зарегистрироваться
         </button>
 

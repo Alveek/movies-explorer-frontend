@@ -30,6 +30,7 @@ const Profile = () => {
             value="Виталий"
             onChange={handleChange}
             type="text"
+            placeholder="Введите имя"
             minLength="2"
             maxLength="40"
             required
@@ -55,6 +56,7 @@ const Profile = () => {
             value="pochta@yandex.ru"
             onChange={handleChange}
             type="email"
+            placeholder="Введите почту"
             minLength="2"
             maxLength="40"
             required

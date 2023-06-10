@@ -41,6 +41,12 @@
   outline: none;
 }
 
+.profile-form__input::placeholder {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+}
+
 .profile-form__button {
   border: none;
   background: none;

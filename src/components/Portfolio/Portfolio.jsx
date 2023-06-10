@@ -15,7 +15,11 @@ const Portfolio = () => {
           rel="noreferrer"
         >
           <span>Статичный сайт</span>{' '}
-          <img className="portfolio__link-img" src={ArrowLink} alt="arrow" />
+          <img
+            className="portfolio__link-img"
+            src={ArrowLink}
+            alt="Ссылка на внешний сайт"
+          />
         </a>
 
         <a
@@ -25,7 +29,11 @@ const Portfolio = () => {
           rel="noreferrer"
         >
           <span>Адаптивный сайт</span>{' '}
-          <img className="portfolio__link-img" src={ArrowLink} alt="arrow" />
+          <img
+            className="portfolio__link-img"
+            src={ArrowLink}
+            alt="Ссылка на внешний сайт"
+          />
         </a>
 
         <a
@@ -35,7 +43,11 @@ const Portfolio = () => {
           rel="noreferrer"
         >
           <span>Одностраничное приложение</span>{' '}
-          <img className="portfolio__link-img" src={ArrowLink} alt="arrow" />
+          <img
+            className="portfolio__link-img"
+            src={ArrowLink}
+            alt="Ссылка на внешний сайт"
+          />
         </a>
       </div>
     </section>

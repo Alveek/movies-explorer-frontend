@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Main from '../Main/Main';
 import Login from '../Login/Login';
@@ -15,12 +15,12 @@ function App() {
   let location = useLocation();
   const headerPaths = ['/', '/movies', '/saved-movies', '/profile'];
   const footerPaths = ['/', '/movies', '/saved-movies'];
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = location.pathname === '/' ? false : true;
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const toggleLoggedIn = () => {
-    setIsLoggedIn(!isLoggedIn);
-  };
+  // const toggleLoggedIn = () => {
+  //   setIsLoggedIn(!isLoggedIn);
+  // };
 
   return (
     <div className="App">
@@ -29,23 +29,25 @@ function App() {
       ) : (
         ''
       )}
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="/signin" element={<Login />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/saved-movies" element={<SavedMovies />} />
-        <Route path="/profile" element={<Profile />} />
+      <main>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/signup" element={<Register />} />
+          <Route path="/signin" element={<Login />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/saved-movies" element={<SavedMovies />} />
+          <Route path="/profile" element={<Profile />} />
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
       {footerPaths.includes(location.pathname) ? <Footer /> : ''}
 
-      {/* Временный тоггл стейта логина */}
+      {/* Временный тоггл стейта логина
       <div className="temp-login">
         <label htmlFor="login">loggedIn</label>
         <input id="login" type="checkbox" onClick={toggleLoggedIn} />
-      </div>
+      </div> */}
     </div>
   );
 }

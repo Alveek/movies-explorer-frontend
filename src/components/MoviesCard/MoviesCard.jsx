@@ -9,7 +9,7 @@ const MoviesCard = ({ movie }) => {
   const isDeleteButton = location.pathname === '/saved-movies';
 
   return (
-    <li className="moviescard__container">
+    <li className="moviescard">
       <img
         className="moviescard__image"
         src={movie.thumbnail}

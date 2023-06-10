@@ -23,7 +23,7 @@
   grid-template-rows: 53px;
 }
 
-.drawer__container.drawer_open {
+.drawer__container.drawer__container_open {
   transform: translateX(0);
 }
 

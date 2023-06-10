@@ -41,13 +41,13 @@
   margin-bottom: 15px;
 }
 
-.about-project__duration_one-week {
+.about-project__duration-weeks_one {
   width: 20%;
   padding: 9px 0;
   background: #2be080;
 }
 
-.about-project__duration_four-weeks {
+.about-project__duration-weeks_four {
   width: 80%;
   padding: 9px 0;
   background: #f2f2f2;
@@ -62,11 +62,11 @@
   color: #a0a0a0;
 }
 
-.about-project__tech_one-week {
+.about-project__tech-weeks_one {
   width: 20%;
 }
 
-.about-project__tech_four-weeks {
+.about-project__tech-weeks_four {
   width: 80%;
 }
 
@@ -88,19 +88,19 @@
     margin-bottom: 81px;
   }
 
-  .about-project__duration_one-week {
+  .about-project__duration-weeks_one {
     width: 21%;
   }
 
-  .about-project__duration_four-weeks {
+  .about-project__duration-weeks_four {
     width: 79%;
   }
 
-  .about-project__tech_one-week {
+  .about-project__tech-weeks_one {
     width: 21%;
   }
 
-  .about-project__tech_four-weeks {
+  .about-project__tech-weeks_four {
     width: 79%;
   }
 }
@@ -147,21 +147,21 @@
     margin-bottom: 10px;
   }
 
-  .about-project__duration_one-week {
+  .about-project__duration-weeks_one {
     width: 36%;
     padding: 11px 0;
   }
 
-  .about-project__duration_four-weeks {
+  .about-project__duration-weeks_four {
     width: 64%;
     padding: 11px 0;
   }
 
-  .about-project__tech_one-week {
+  .about-project__tech-weeks_one {
     width: 36%;
   }
 
-  .about-project__tech_four-weeks {
+  .about-project__tech-weeks_four {
     width: 64%;
   }
 }
