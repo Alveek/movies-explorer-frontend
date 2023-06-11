@@ -98,6 +98,9 @@ const Register = () => {
           >
             {errors.password}
           </span>
+          <span className="register-form__api-error">
+            Что-то пошло не так...
+          </span>
         </div>
 
         <button

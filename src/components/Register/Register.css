@@ -7,21 +7,6 @@
   margin: 0 auto;
 }
 
-.register-form__btn {
-  width: 100%;
-  background: #2be080;
-  border-radius: 3px;
-  border: 0;
-  color: #fff;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  min-height: 45px;
-  margin-bottom: 16px;
-  margin: 55px 0 16px;
-  cursor: pointer;
-}
-
 .register-page__route {
   width: 38px;
   height: 38px;
@@ -83,6 +68,20 @@
   color: #a0a0a0;
 }
 
+.register-form__btn {
+  width: 100%;
+  background: #2be080;
+  border-radius: 3px;
+  border: 0;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  min-height: 45px;
+  margin: 129px 0 16px;
+  cursor: pointer;
+}
+
 /* .register-form__btn:disabled {
   color: #000000;
   background-color: #f7f7f7;
@@ -106,8 +105,18 @@ register-form__input-field {
   font-size: 10px;
   line-height: 12px;
   position: absolute;
-  margin: -20px 0;
+  margin: -18px 0;
   max-width: 396px;
+}
+
+.register-form__api-error {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  position: absolute;
+  margin: -18px 0;
+  max-width: 396px;
+  color: #ee3465;
 }
 
 .register-form__input-error_active {
@@ -116,15 +125,13 @@ register-form__input-field {
 
 @media screen and (max-width: 768px) {
   .register-page {
-    padding-top: 0px;
-    min-height: 100vh;
+    min-height: calc(100vh - 146px);
   }
 }
 
 @media screen and (max-width: 450px) {
   .register-page {
-    padding-top: 56px;
-    min-height: 100vh;
+    padding: 56px 0;
     max-width: 260px;
     justify-content: start;
   }
@@ -138,7 +145,7 @@ register-form__input-field {
   }
 
   .register-form__btn {
-    margin: 70px 0 16px;
+    margin: 217px 0 16px;
   }
 
   .register-page__text {
