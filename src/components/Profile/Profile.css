@@ -1,0 +1,128 @@
+.profile {
+  max-width: 410px;
+  padding-top: 33px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.profile__welcome-message {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  margin-bottom: 110px;
+}
+
+.profile-form__input-field:first-child {
+  border-bottom: 1px solid black;
+}
+
+.profile-form__input-field {
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-form__label {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.profile-form__input {
+  border: none;
+  padding: 0;
+  text-align: right;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  outline: none;
+}
+
+.profile-form__input::placeholder {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.profile-form__button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 16px;
+  display: block;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.profile-form__button-edit {
+  margin-top: 204px;
+}
+
+.profile-form__button-signout {
+  font-weight: 500;
+  color: #ee3465;
+  margin-top: 16px;
+  padding-bottom: 70px;
+}
+
+.profile-form__input-field {
+  position: relative;
+}
+
+.profile-form__input-error {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  position: absolute;
+  max-width: 410px;
+  margin: 16px 0 0;
+}
+
+.profile-form__input-error_active {
+  color: #ee3465;
+}
+
+@media screen and (max-width: 768px) {
+  .profile {
+    justify-content: center;
+    margin: 0 auto;
+    min-height: calc(100vh - 156px);
+  }
+
+  .profile__welcome-message {
+    margin-bottom: 80px;
+  }
+
+  .profile-form__button-edit {
+    margin-top: 194px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .profile {
+    display: grid;
+    grid-template-rows: 13% 46%;
+    /* padding-top: 34px; */
+  }
+
+  .profile-form__input-field {
+    width: 260px;
+  }
+
+  .profile__welcome-message {
+    margin-bottom: 0;
+  }
+
+  .profile-form__button-edit {
+    margin-top: 361px;
+  }
+
+  .profile-form__button {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

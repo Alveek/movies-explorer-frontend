@@ -1,0 +1,67 @@
+.drawer__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.drawer__container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 520px;
+  background-color: #fff;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: 53px;
+}
+
+.drawer__container.drawer__container_open {
+  transform: translateX(0);
+}
+
+.drawer__burger-btn {
+  all: unset;
+  background: url('../../images/icon-burger.svg') no-repeat center;
+  height: 44px;
+  width: 44px;
+  cursor: pointer;
+}
+
+.drawer__close-btn {
+  all: unset;
+  background: url('../../images/icon-close.svg') no-repeat center;
+  height: 44px;
+  width: 44px;
+  cursor: pointer;
+  justify-self: end;
+  margin-top: 16px;
+  margin-right: 16px;
+}
+
+.drawer__burger-btn:focus {
+  outline: 2px solid black;
+}
+
+.drawer__close-btn:focus {
+  outline: 2px solid black;
+}
+
+@media screen and (max-width: 450px) {
+  .drawer__container {
+    width: 320px;
+    grid-template-rows: 57px;
+  }
+
+  .drawer__close-btn {
+    margin-top: 8px;
+    margin-right: 8px;
+  }
+}

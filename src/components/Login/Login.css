@@ -1,0 +1,145 @@
+.login-page {
+  max-width: 396px;
+  padding: 73px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.login-page__route {
+  width: 38px;
+  height: 38px;
+}
+
+.login-page__title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 37px 0 39px;
+}
+
+.form__input {
+  display: block;
+  border: none;
+  border-bottom: 1px solid #e8e8e8;
+  width: 100%;
+  padding: 8px 0;
+  margin-bottom: 23px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  outline: none;
+  color: #000;
+}
+
+.form__input::placeholder {
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 400;
+}
+
+.form__input:focus-visible {
+  box-shadow: 0 1px 0 0 #2be080;
+}
+
+.form__label {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  display: block;
+  color: #a0a0a0;
+}
+
+.form__btn {
+  width: 100%;
+  background: #2be080;
+  border-radius: 3px;
+  border: 0;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  min-height: 45px;
+  margin: 198px 0 16px;
+  cursor: pointer;
+}
+
+.form__btn:hover {
+  opacity: 0.8;
+}
+
+.login-page__text {
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #a0a0a0;
+}
+
+.login-page__link {
+  color: #2be080;
+  text-decoration: none;
+}
+
+.login-page__link:hover {
+  opacity: 0.7;
+}
+
+.form__input-field {
+  position: relative;
+}
+
+.form__input-error {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  position: absolute;
+  margin: -20px 0;
+  max-width: 396px;
+}
+
+.form__api-error {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  position: absolute;
+  margin: -20px 0;
+  max-width: 396px;
+  color: #ee3465;
+}
+
+.form__input-error_active {
+  color: #ee3465;
+}
+
+@media screen and (max-width: 768px) {
+  .login-page {
+    min-height: calc(100vh - 146px);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .login-page {
+    padding: 56px 0;
+    max-width: 260px;
+    justify-content: start;
+  }
+  .login-page__route {
+    align-self: center;
+  }
+
+  .login-page__title {
+    margin: 50px 0 79px;
+    text-align: center;
+  }
+
+  .form__btn {
+    margin: 286px 0 16px;
+  }
+
+  .login-page__text {
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 30px;
+  }
+}

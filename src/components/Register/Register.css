@@ -1,0 +1,156 @@
+.register-page {
+  max-width: 396px;
+  padding: 73px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.register-page__route {
+  width: 38px;
+  height: 38px;
+}
+
+.register-page__title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 37px 0 39px;
+}
+
+.register-page__text {
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #a0a0a0;
+}
+
+.register-page__link {
+  color: #2be080;
+  text-decoration: none;
+}
+
+.register-page__link:hover {
+  opacity: 0.7;
+}
+
+.register-form__input {
+  display: block;
+  border: none;
+  border-bottom: 1px solid #e8e8e8;
+  width: 100%;
+  padding: 8px 0;
+  margin-bottom: 23px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  outline: none;
+  color: #000;
+}
+
+.register-form__input::placeholder {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.register-form__input:focus-visible {
+  box-shadow: 0 1px 0 0 #2be080;
+}
+
+.register-form__label {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  /* margin-bottom: 10px; */
+  display: block;
+  color: #a0a0a0;
+}
+
+.register-form__btn {
+  width: 100%;
+  background: #2be080;
+  border-radius: 3px;
+  border: 0;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  min-height: 45px;
+  margin: 129px 0 16px;
+  cursor: pointer;
+}
+
+/* .register-form__btn:disabled {
+  color: #000000;
+  background-color: #f7f7f7;
+  border: 1px solid #000000;
+  pointer-events: none;
+  cursor: not-allowed;
+  user-select: none;
+  opacity: 0.2;
+} */
+
+.register-form__btn:hover {
+  opacity: 0.8;
+}
+
+register-form__input-field {
+  position: relative;
+}
+
+.register-form__input-error {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  position: absolute;
+  margin: -18px 0;
+  max-width: 396px;
+}
+
+.register-form__api-error {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  position: absolute;
+  margin: -18px 0;
+  max-width: 396px;
+  color: #ee3465;
+}
+
+.register-form__input-error_active {
+  color: #ee3465;
+}
+
+@media screen and (max-width: 768px) {
+  .register-page {
+    min-height: calc(100vh - 146px);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .register-page {
+    padding: 56px 0;
+    max-width: 260px;
+    justify-content: start;
+  }
+  .register-page__route {
+    align-self: center;
+  }
+
+  .register-page__title {
+    margin: 50px 0 79px;
+    text-align: center;
+  }
+
+  .register-form__btn {
+    margin: 217px 0 16px;
+  }
+
+  .register-page__text {
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 30px;
+  }
+}

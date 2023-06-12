@@ -1,0 +1,167 @@
+.about-project {
+  margin: 110px 70px;
+}
+
+.about-project__title {
+  margin: 0 0 23px;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+}
+
+.about-project__container {
+  display: flex;
+  gap: 40px;
+  margin-top: 48px;
+  margin-bottom: 97px;
+}
+
+.about-project__description {
+  max-width: 550px;
+}
+
+.about-project__description-title {
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  margin-bottom: 26px;
+}
+
+.about-project__description-text {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.about-project__duration {
+  display: flex;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.about-project__duration-weeks_one {
+  width: 20%;
+  padding: 9px 0;
+  background: #2be080;
+}
+
+.about-project__duration-weeks_four {
+  width: 80%;
+  padding: 9px 0;
+  background: #f2f2f2;
+}
+
+.about-project__tech {
+  display: flex;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #a0a0a0;
+}
+
+.about-project__tech-weeks_one {
+  width: 20%;
+}
+
+.about-project__tech-weeks_four {
+  width: 80%;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project {
+    margin: 90px 50px;
+  }
+
+  .about-project__description-title {
+    margin-bottom: 22px;
+  }
+
+  .about-project__description-text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-project__container {
+    margin-bottom: 81px;
+  }
+
+  .about-project__duration-weeks_one {
+    width: 21%;
+  }
+
+  .about-project__duration-weeks_four {
+    width: 79%;
+  }
+
+  .about-project__tech-weeks_one {
+    width: 21%;
+  }
+
+  .about-project__tech-weeks_four {
+    width: 79%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .about-project {
+    margin: 70px 18px;
+  }
+
+  .about-project__title {
+    margin: 0 0 27px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.04em;
+  }
+
+  .about-project__description-title {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 15px;
+  }
+
+  .about-project__container {
+    display: grid;
+    gap: 28px;
+    margin-top: 42px;
+    margin-bottom: 49px;
+  }
+
+  .about-project__description-text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-project__tech {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .about-project__duration {
+    font-size: 11px;
+    line-height: 13px;
+    margin-bottom: 10px;
+  }
+
+  .about-project__duration-weeks_one {
+    width: 36%;
+    padding: 11px 0;
+  }
+
+  .about-project__duration-weeks_four {
+    width: 64%;
+    padding: 11px 0;
+  }
+
+  .about-project__tech-weeks_one {
+    width: 36%;
+  }
+
+  .about-project__tech-weeks_four {
+    width: 64%;
+  }
+}
