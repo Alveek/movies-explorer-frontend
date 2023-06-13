@@ -10,11 +10,19 @@ const MoviesCard = ({ movie }) => {
 
   return (
     <li className="moviescard">
-      <img
-        className="moviescard__image"
-        src={movie.thumbnail}
-        alt={movie.nameRU}
-      />
+      <a
+        className="moviescard__image-container"
+        href={movie.trailerLink}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <img
+          className="moviescard__image"
+          src={`https://api.nomoreparties.co${movie.image.url}`}
+          alt={movie.nameRU}
+        />
+      </a>
+
       <div className="moviescard__details">
         <p className="moviescard__name">{movie.nameRU}</p>
         <p className="moviescard__duration">

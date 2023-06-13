@@ -15,6 +15,9 @@
   vertical-align: bottom;
   transition: all 0.16s linear;
   object-fit: cover;
+  object-position: top;
+  width: 364px;
+  height: 203px;
 }
 
 .moviescard__image:hover {

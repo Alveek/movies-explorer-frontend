@@ -1,5 +1,5 @@
 import './App.css';
-// import { useState } from 'react';
+import { useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Main from '../Main/Main';
 import Login from '../Login/Login';
@@ -15,12 +15,11 @@ function App() {
   let location = useLocation();
   const headerPaths = ['/', '/movies', '/saved-movies', '/profile'];
   const footerPaths = ['/', '/movies', '/saved-movies'];
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const isLoggedIn = location.pathname === '/' ? false : true;
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-  // const toggleLoggedIn = () => {
-  //   setIsLoggedIn(!isLoggedIn);
-  // };
+  const toggleLoggedIn = () => {
+    setIsLoggedIn(!isLoggedIn);
+  };
 
   return (
     <div className="App">
@@ -43,11 +42,16 @@ function App() {
       </main>
       {footerPaths.includes(location.pathname) ? <Footer /> : ''}
 
-      {/* Временный тоггл стейта логина
+      {/* Временный тоггл стейта логина */}
       <div className="temp-login">
         <label htmlFor="login">loggedIn</label>
-        <input id="login" type="checkbox" onClick={toggleLoggedIn} />
-      </div> */}
+        <input
+          id="login"
+          type="checkbox"
+          onChange={toggleLoggedIn}
+          checked={isLoggedIn}
+        />
+      </div>
     </div>
   );
 }

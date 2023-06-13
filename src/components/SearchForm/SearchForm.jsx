@@ -1,23 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import IconFind from '../../images/find.svg';
 
-const SearchForm = () => {
+const SearchForm = ({ onSearch, onFilter }) => {
+  const isChecked = JSON.parse(localStorage.getItem('filterCheckBox'));
+  const [isShortFilmChecked, setIsShortFilmChecked] = useState(isChecked);
+  const [searchText, setSearchText] = useState('');
+
+  const checkFilterBox = () => {
+    setIsShortFilmChecked(!isShortFilmChecked);
+    localStorage.setItem('filterCheckBox', !isShortFilmChecked);
+  };
+
   return (
     <div className="search">
-      <form className="search__form">
+      <form
+        className="search__form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          // onSearch({ searchText, isShortFilmChecked });
+          onFilter({ searchText, isShortFilmChecked });
+        }}
+      >
         <input
           className="search__form-input"
           type="search"
           placeholder="Фильм"
-          required
+          onChange={(e) => setSearchText(e.target.value)}
         />
 
         <button type="submit" className="search__form-button">
           <img src={IconFind} alt="Изображение иконки поиска" />
         </button>
-        <FilterCheckbox />
+
+        <FilterCheckbox
+          isChecked={isShortFilmChecked}
+          onCheck={checkFilterBox}
+        />
       </form>
     </div>
   );
