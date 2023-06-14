@@ -23,7 +23,7 @@ const MoviesCardList = ({ movies }) => {
         ? movies?.slice(0, 8).map((movie) => {
             return <MoviesCard key={movie.id} movie={movie} />;
           })
-        : movies?.map((movie) => {
+        : movies?.slice(0, 12).map((movie) => {
             return <MoviesCard key={movie.id} movie={movie} />;
           })}
     </ul>

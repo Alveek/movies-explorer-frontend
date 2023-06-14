@@ -4,11 +4,8 @@ import './Login.css';
 import Logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const { values, handleChange, errors, isValid } = useFormAndValidation();
-  const onLogin = (val) => {
-    console.log(val);
-  };
 
   return (
     <section className="login-page">
@@ -61,8 +58,7 @@ const Login = () => {
             onChange={handleChange}
             type="password"
             placeholder="Введите пароль"
-            minLength="6"
-            maxLength="200"
+            minLength="1"
             required
           />
           <span

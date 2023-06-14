@@ -1,23 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Movies.css';
-import { moviesApi } from '../../utils/MoviesApi';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
-const Movies = () => {
-  const [movies, setMovies] = useState([]);
+const Movies = ({ movies }) => {
   const [filteredMovies, setFilteredMovies] = useState([]);
-
-  useEffect(() => {
-    moviesApi.getMovies().then((data) => {
-      setMovies(data);
-    });
-  }, []);
 
   const filterMovies = (searchParams) => {
     let filtered = [];
     if (searchParams.isShortFilmChecked) {
-      filtered = movies.filter((m) => m.duration <= 40);
+      filtered = movies.filter((m) => {
+        return (
+          m.duration <= 40 &&
+          m.nameRU.toLowerCase().trim().includes(searchParams.searchText)
+        );
+      });
+      setFilteredMovies(filtered);
+    } else if (!searchParams.isShortFilmChecked) {
+      filtered = movies.filter((m) => {
+        return m.nameRU.toLowerCase().trim().includes(searchParams.searchText);
+      });
       setFilteredMovies(filtered);
     } else {
       setFilteredMovies(movies);

@@ -4,11 +4,8 @@ import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import Logo from '../../images/logo.svg';
 import './Register.css';
 
-const Register = () => {
+const Register = ({ onRegister }) => {
   const { values, handleChange, errors, isValid } = useFormAndValidation();
-  const onRegister = (val) => {
-    console.log(val);
-  };
 
   return (
     <section className="register-page">
@@ -87,8 +84,7 @@ const Register = () => {
             onChange={handleChange}
             type="password"
             placeholder="Введите пароль"
-            minLength="6"
-            maxLength="200"
+            minLength="1"
             required
           />
           <span

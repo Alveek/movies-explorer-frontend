@@ -1,20 +1,27 @@
-import React from 'react';
+import { useContext, useEffect } from 'react';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './Profile.css';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 
-const Profile = () => {
-  const { values, handleChange, errors, isValid } = useFormAndValidation();
-  const onEditProfile = (val) => {
-    console.log(val);
-  };
+const Profile = ({ onSignOut, onUpdateUser }) => {
+  const { values, handleChange, errors, isValid, setValues, setIsValid } =
+    useFormAndValidation();
+  const { currentUser } = useContext(CurrentUserContext);
+
+  useEffect(() => {
+    if (currentUser) {
+      setValues(currentUser);
+      setIsValid(true);
+    }
+  }, [currentUser, setIsValid, setValues]);
 
   return (
     <section className="profile">
-      <h1 className="profile__welcome-message">Привет, Виталий!</h1>
+      <h1 className="profile__welcome-message">Привет, {currentUser.name}!</h1>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          onEditProfile(values);
+          onUpdateUser(values);
         }}
         className="profile-form"
       >
@@ -26,8 +33,7 @@ const Profile = () => {
             className="profile-form__input"
             id="user-name-input"
             name="name"
-            // value={values.name || ''}
-            value="Виталий"
+            value={values.name || ''}
             onChange={handleChange}
             type="text"
             placeholder="Введите имя"
@@ -52,8 +58,7 @@ const Profile = () => {
             className="profile-form__input"
             id="user-email-input"
             name="email"
-            // value={values.email || ''}
-            value="pochta@yandex.ru"
+            value={values.email || ''}
             onChange={handleChange}
             type="email"
             placeholder="Введите почту"
@@ -77,7 +82,7 @@ const Profile = () => {
           Редактировать
         </button>
         <button
-          type="submit"
+          onClick={onSignOut}
           className="profile-form__button profile-form__button-signout"
         >
           Выйти из аккаунта

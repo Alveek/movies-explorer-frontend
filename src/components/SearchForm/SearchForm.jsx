@@ -3,7 +3,7 @@ import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import IconFind from '../../images/find.svg';
 
-const SearchForm = ({ onSearch, onFilter }) => {
+const SearchForm = ({ onFilter }) => {
   const isChecked = JSON.parse(localStorage.getItem('filterCheckBox'));
   const [isShortFilmChecked, setIsShortFilmChecked] = useState(isChecked);
   const [searchText, setSearchText] = useState('');
@@ -19,7 +19,6 @@ const SearchForm = ({ onSearch, onFilter }) => {
         className="search__form"
         onSubmit={(e) => {
           e.preventDefault();
-          // onSearch({ searchText, isShortFilmChecked });
           onFilter({ searchText, isShortFilmChecked });
         }}
       >
