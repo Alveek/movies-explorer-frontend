@@ -7,6 +7,7 @@ import MainApi from '../../utils/MainApi';
 import { moviesApi } from '../../utils/MoviesApi';
 import { auth } from '../../utils/Auth';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Main from '../Main/Main';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
@@ -25,8 +26,15 @@ function App() {
   const headerPaths = ['/', '/movies', '/saved-movies', '/profile'];
   const footerPaths = ['/', '/movies', '/saved-movies'];
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [movies, setMovies] = useState([]);
+  const [apiErrors, setApiErrors] = useState({
+    login: {},
+    register: {},
+    profile: {}
+  });
+  const [isOK, setIsOK] = useState(true);
 
+  console.log(apiErrors);
+  const [movies, setMovies] = useState([]);
   const mainApi = new MainApi({
     url: 'http://localhost:3000',
     headers: {
@@ -34,14 +42,6 @@ function App() {
       authorization: `Bearer ${localStorage.getItem('jwt')}`
     }
   });
-
-  // const toggleLoggedIn = () => {
-  //   setIsLoggedIn(!isLoggedIn);
-  // };
-
-  // useEffect(() => {
-  //   mainApi.getUserInfo().then((user) => console.log(user));
-  // }, [navigate]);
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -51,7 +51,7 @@ function App() {
         .then((res) => {
           if (res) {
             setIsLoggedIn(true);
-            navigate('/movies');
+            navigate(location.pathname);
           }
         })
         .catch((err) => console.log(err));
@@ -70,17 +70,6 @@ function App() {
         });
   }, [isLoggedIn]);
 
-  const handleRegister = (values) => {
-    auth
-      .register(values.name, values.email, values.password)
-      .then((res) => {
-        navigate('/signin');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   const handleLogin = (values) => {
     auth
       .authorize(values.email, values.password)
@@ -96,13 +85,31 @@ function App() {
       });
   };
 
+  const handleRegister = (values) => {
+    auth
+      .register(values.name, values.email, values.password)
+      .then((res) => {
+        // navigate('/signin');
+        handleLogin(values);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const handleUpdateUser = (user) => {
     mainApi
       .editProfile(user)
       .then(() => {
+        setApiErrors({ ...apiErrors, profile: {} });
         setCurrentUser({ ...currentUser, name: user.name, email: user.email });
+        setIsOK(true);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setIsOK(false);
+        setApiErrors({ ...apiErrors, profile: err });
+        console.log(err);
+      });
   };
 
   const handleSignOut = () => {
@@ -127,12 +134,33 @@ function App() {
               element={<Register onRegister={handleRegister} />}
             />
             <Route path="/signin" element={<Login onLogin={handleLogin} />} />
-            <Route path="/movies" element={<Movies movies={movies} />} />
-            <Route path="/saved-movies" element={<SavedMovies />} />
+
+            <Route
+              path="/movies"
+              element={
+                <ProtectedRoute
+                  element={Movies}
+                  isLoggedIn={isLoggedIn}
+                  movies={movies}
+                />
+              }
+            />
+
+            <Route
+              path="/saved-movies"
+              element={
+                <ProtectedRoute element={SavedMovies} isLoggedIn={isLoggedIn} />
+              }
+            />
+
             <Route
               path="/profile"
               element={
-                <Profile
+                <ProtectedRoute
+                  element={Profile}
+                  isLoggedIn={isLoggedIn}
+                  apiErrors={apiErrors}
+                  isOK={isOK}
                   onSignOut={handleSignOut}
                   onUpdateUser={handleUpdateUser}
                 />
@@ -143,17 +171,6 @@ function App() {
           </Routes>
         </main>
         {footerPaths.includes(location.pathname) ? <Footer /> : ''}
-
-        {/* Временный тоггл стейта логина */}
-        {/* <div className="temp-login">
-          <label htmlFor="login">loggedIn</label>
-          <input
-            id="login"
-            type="checkbox"
-            onChange={toggleLoggedIn}
-            checked={isLoggedIn}
-          />
-        </div> */}
       </CurrentUserContext.Provider>
     </div>
   );

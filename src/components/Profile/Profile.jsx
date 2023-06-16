@@ -1,12 +1,13 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './Profile.css';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 
-const Profile = ({ onSignOut, onUpdateUser }) => {
+const Profile = ({ onSignOut, onUpdateUser, apiErrors, isOK }) => {
   const { values, handleChange, errors, isValid, setValues, setIsValid } =
     useFormAndValidation();
   const { currentUser } = useContext(CurrentUserContext);
+  const [showSaveBtn, setShowSaveBtn] = useState(false);
 
   useEffect(() => {
     if (currentUser) {
@@ -15,16 +16,21 @@ const Profile = ({ onSignOut, onUpdateUser }) => {
     }
   }, [currentUser, setIsValid, setValues]);
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    onUpdateUser(values);
+  };
+
+  useEffect(() => {
+    if (isOK) {
+      setShowSaveBtn(false);
+    }
+  }, [isOK, apiErrors]);
+
   return (
     <section className="profile">
       <h1 className="profile__welcome-message">Привет, {currentUser.name}!</h1>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          onUpdateUser(values);
-        }}
-        className="profile-form"
-      >
+      <form onSubmit={onSubmit} className="profile-form">
         <div className="profile-form__input-field">
           <label className="profile-form__label" htmlFor="user-name-input">
             Имя
@@ -39,6 +45,7 @@ const Profile = ({ onSignOut, onUpdateUser }) => {
             placeholder="Введите имя"
             minLength="2"
             maxLength="40"
+            disabled={!showSaveBtn && isOK}
             required
           />
           <span
@@ -64,6 +71,7 @@ const Profile = ({ onSignOut, onUpdateUser }) => {
             placeholder="Введите почту"
             minLength="2"
             maxLength="40"
+            disabled={!showSaveBtn && isOK}
             required
           />
           <span
@@ -75,18 +83,43 @@ const Profile = ({ onSignOut, onUpdateUser }) => {
           </span>
         </div>
 
-        <button
-          type="submit"
-          className="profile-form__button profile-form__button-edit"
-        >
-          Редактировать
-        </button>
-        <button
-          onClick={onSignOut}
-          className="profile-form__button profile-form__button-signout"
-        >
-          Выйти из аккаунта
-        </button>
+        <div className="profile-form__buttons">
+          {apiErrors.profile && (
+            <span className="profile-form__error-message">
+              {apiErrors.profile.errorText === 'Validation failed'
+                ? apiErrors.profile.joiMessage
+                : apiErrors.profile.errorText}
+            </span>
+          )}
+
+          {showSaveBtn ? (
+            <button
+              type="submit"
+              className="profile-form__button profile-form__button-save"
+              disabled={!isValid}
+            >
+              Сохранить
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="profile-form__button profile-form__button-edit"
+              onClick={(e) => {
+                e.preventDefault();
+                setShowSaveBtn(true);
+              }}
+            >
+              Редактировать
+            </button>
+          )}
+
+          <button
+            onClick={onSignOut}
+            className="profile-form__button profile-form__button-signout"
+          >
+            Выйти из аккаунта
+          </button>
+        </div>
       </form>
     </section>
   );

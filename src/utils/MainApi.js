@@ -8,7 +8,13 @@ export default class MainApi {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Ошибка: ${res.status}`);
+    return res.text().then((text) => {
+      return Promise.reject({
+        status: res.status,
+        errorText: JSON.parse(text).message,
+        joiMessage: JSON.parse(text).validation?.body.message || ''
+      });
+    });
   }
 
   getUserInfo() {
