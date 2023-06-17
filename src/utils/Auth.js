@@ -11,8 +11,10 @@ class Auth {
     return res.text().then((text) => {
       return Promise.reject({
         status: res.status,
-        errorText: JSON.parse(text).message,
-        joiMessage: JSON.parse(text).validation?.body.message || ''
+        errorText:
+          JSON.parse(text).message === 'Validation failed'
+            ? JSON.parse(text).validation.body.message
+            : JSON.parse(text).message
       });
     });
   };

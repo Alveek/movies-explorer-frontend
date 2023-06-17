@@ -1,11 +1,21 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import Logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
+import { validateEmail } from '../../utils/helpers';
 
-const Login = ({ onLogin }) => {
+const Login = ({ onLogin, isLoggedIn, apiErrors }) => {
   const { values, handleChange, errors, isValid } = useFormAndValidation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/movies');
+    }
+  }, [isLoggedIn]);
 
   return (
     <section className="login-page">
@@ -37,12 +47,12 @@ const Login = ({ onLogin }) => {
             maxLength="40"
             required
           />
-          <span
-            className={`form__input-error ${
-              isValid ? '' : 'form__input-error_active'
-            }`}
-          >
-            {errors.email}
+          <span className={`form__input-error form__input-error_active`}>
+            {values.email?.length === 0
+              ? 'Это поле не должно быть пустым!'
+              : values.email?.length > 0 && !validateEmail(values.email)
+              ? 'Неверный формат почты!'
+              : ''}
           </span>
         </div>
 
@@ -68,9 +78,15 @@ const Login = ({ onLogin }) => {
           >
             {errors.password}
           </span>
+
+          <span className="form__api-error">{apiErrors.login.errorText}</span>
         </div>
 
-        <button type="submit" className="form__btn">
+        <button
+          type="submit"
+          className="form__btn"
+          disabled={!isValid || !validateEmail(values.email)}
+        >
           Войти
         </button>
 

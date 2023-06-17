@@ -3,6 +3,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { validateEmail } from '../../utils/helpers';
 import MainApi from '../../utils/MainApi';
 import { moviesApi } from '../../utils/MoviesApi';
 import { auth } from '../../utils/Auth';
@@ -17,6 +18,7 @@ import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import Preloader from '../Preloader/Preloader';
 
 function App() {
   const location = useLocation();
@@ -31,10 +33,12 @@ function App() {
     register: {},
     profile: {}
   });
-  const [isOK, setIsOK] = useState(true);
+  const [isOK, setIsOK] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [movies, setMovies] = useState([]);
 
   console.log(apiErrors);
-  const [movies, setMovies] = useState([]);
+
   const mainApi = new MainApi({
     url: 'http://localhost:3000',
     headers: {
@@ -42,6 +46,15 @@ function App() {
       authorization: `Bearer ${localStorage.getItem('jwt')}`
     }
   });
+
+  // очистка ошибок при переходе на другие страницы
+  useEffect(() => {
+    setApiErrors({
+      login: {},
+      register: {},
+      profile: {}
+    });
+  }, [location]);
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -51,22 +64,23 @@ function App() {
         .then((res) => {
           if (res) {
             setIsLoggedIn(true);
+
             navigate(location.pathname);
           }
         })
-        .catch((err) => console.log(err));
+        .catch((error) => console.log(error));
     }
   }, []);
 
   useEffect(() => {
     isLoggedIn &&
-      Promise.all([mainApi.getUserInfo(), moviesApi.getMovies()])
-        .then(([user, movies]) => {
+      mainApi
+        .getUserInfo()
+        .then((user) => {
           setCurrentUser(user);
-          setMovies(movies);
         })
-        .catch((err) => {
-          console.log(`Что-то пошло не так... (${err})`);
+        .catch((error) => {
+          console.log(`Что-то пошло не так... (${error})`);
         });
   }, [isLoggedIn]);
 
@@ -80,8 +94,10 @@ function App() {
           navigate('/movies');
         }
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        setIsOK(false);
+        setApiErrors({ ...apiErrors, login: error });
+        console.log(error);
       });
   };
 
@@ -89,11 +105,12 @@ function App() {
     auth
       .register(values.name, values.email, values.password)
       .then((res) => {
-        // navigate('/signin');
         handleLogin(values);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        setIsOK(false);
+        setApiErrors({ ...apiErrors, register: error });
+        console.log(error);
       });
   };
 
@@ -102,13 +119,17 @@ function App() {
       .editProfile(user)
       .then(() => {
         setApiErrors({ ...apiErrors, profile: {} });
-        setCurrentUser({ ...currentUser, name: user.name, email: user.email });
+        setCurrentUser({
+          ...currentUser,
+          name: user.name,
+          email: user.email
+        });
         setIsOK(true);
       })
-      .catch((err) => {
+      .catch((error) => {
         setIsOK(false);
-        setApiErrors({ ...apiErrors, profile: err });
-        console.log(err);
+        setApiErrors({ ...apiErrors, profile: error });
+        console.log(error);
       });
   };
 
@@ -121,19 +142,35 @@ function App() {
   return (
     <div className="App">
       <CurrentUserContext.Provider value={{ currentUser }}>
-        {headerPaths.includes(location.pathname) ? (
+        {headerPaths.includes(location.pathname) && (
           <Header isLoggedIn={isLoggedIn} />
-        ) : (
-          ''
         )}
+        {isLoading && <Preloader />}
         <main>
           <Routes>
             <Route path="/" element={<Main />} />
+
             <Route
               path="/signup"
-              element={<Register onRegister={handleRegister} />}
+              element={
+                <Register
+                  onRegister={handleRegister}
+                  isLoggedIn={isLoggedIn}
+                  apiErrors={apiErrors}
+                />
+              }
             />
-            <Route path="/signin" element={<Login onLogin={handleLogin} />} />
+
+            <Route
+              path="/signin"
+              element={
+                <Login
+                  onLogin={handleLogin}
+                  isLoggedIn={isLoggedIn}
+                  apiErrors={apiErrors}
+                />
+              }
+            />
 
             <Route
               path="/movies"
@@ -167,11 +204,12 @@ function App() {
               }
             />
 
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<NotFound isLoggedIn={isLoggedIn} />} />
           </Routes>
         </main>
-        {footerPaths.includes(location.pathname) ? <Footer /> : ''}
+        {footerPaths.includes(location.pathname) && <Footer />}
       </CurrentUserContext.Provider>
+      )
     </div>
   );
 }

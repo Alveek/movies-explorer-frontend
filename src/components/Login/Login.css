@@ -65,6 +65,11 @@
   cursor: pointer;
 }
 
+.form__btn:disabled {
+  background: #f8f8f8;
+  color: #c2c2c2;
+}
+
 .form__btn:hover {
   opacity: 0.8;
 }
@@ -109,6 +114,15 @@
 }
 
 .form__input-error_active {
+  color: #ee3465;
+}
+.form__api-error {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  position: absolute;
+  margin: 0;
+  max-width: 396px;
   color: #ee3465;
 }
 

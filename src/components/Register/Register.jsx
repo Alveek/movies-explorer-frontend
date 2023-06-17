@@ -1,11 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import Logo from '../../images/logo.svg';
+import { validateEmail } from '../../utils/helpers';
 import './Register.css';
 
-const Register = ({ onRegister }) => {
+const Register = ({ onRegister, isLoggedIn, apiErrors }) => {
   const { values, handleChange, errors, isValid } = useFormAndValidation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/movies');
+    }
+  }, [isLoggedIn]);
 
   return (
     <section className="register-page">
@@ -63,12 +72,12 @@ const Register = ({ onRegister }) => {
             maxLength="40"
             required
           />
-          <span
-            className={`register-form__input-error ${
-              isValid ? '' : 'register-form__input-error_active'
-            }`}
-          >
-            {errors.email}
+          <span className={`form__input-error form__input-error_active`}>
+            {values.email?.length === 0
+              ? 'Это поле не должно быть пустым!'
+              : values.email?.length > 0 && !validateEmail(values?.email)
+              ? 'Неверный формат почты!'
+              : ''}
           </span>
         </div>
 
@@ -95,7 +104,7 @@ const Register = ({ onRegister }) => {
             {errors.password}
           </span>
           <span className="register-form__api-error">
-            Что-то пошло не так...
+            {apiErrors.register.errorText}
           </span>
         </div>
 

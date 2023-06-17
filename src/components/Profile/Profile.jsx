@@ -1,13 +1,15 @@
+import './Profile.css';
 import { useContext, useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import './Profile.css';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
+import { validateEmail } from '../../utils/helpers';
 
 const Profile = ({ onSignOut, onUpdateUser, apiErrors, isOK }) => {
   const { values, handleChange, errors, isValid, setValues, setIsValid } =
     useFormAndValidation();
   const { currentUser } = useContext(CurrentUserContext);
   const [showSaveBtn, setShowSaveBtn] = useState(false);
+  const [showSuccessMsg, setShowSuccessMsg] = useState(false);
 
   useEffect(() => {
     if (currentUser) {
@@ -21,9 +23,12 @@ const Profile = ({ onSignOut, onUpdateUser, apiErrors, isOK }) => {
     onUpdateUser(values);
   };
 
+  // если запрос прошел успешно, скрыть кнопку сохранить
+  // т.е. если isOK и нет ошибок
   useEffect(() => {
     if (isOK) {
       setShowSaveBtn(false);
+      setShowSuccessMsg(true);
     }
   }, [isOK, apiErrors]);
 
@@ -75,20 +80,28 @@ const Profile = ({ onSignOut, onUpdateUser, apiErrors, isOK }) => {
             required
           />
           <span
-            className={`profile-form__input-error ${
-              isValid ? '' : 'profile-form__input-error_active'
-            }`}
+            className={
+              'profile-form__input-error profile-form__input-error_active'
+            }
           >
-            {errors.email}
+            {values.email?.length === 0
+              ? 'Это поле не должно быть пустым!'
+              : values.email?.length > 0 && !validateEmail(values.email)
+              ? 'Неверный формат почты!'
+              : ''}
           </span>
         </div>
 
         <div className="profile-form__buttons">
           {apiErrors.profile && (
             <span className="profile-form__error-message">
-              {apiErrors.profile.errorText === 'Validation failed'
-                ? apiErrors.profile.joiMessage
-                : apiErrors.profile.errorText}
+              {apiErrors.profile.errorText}
+            </span>
+          )}
+
+          {showSuccessMsg && (
+            <span className="profile-form__success-message">
+              Данные успешно обновлены!
             </span>
           )}
 
@@ -96,7 +109,11 @@ const Profile = ({ onSignOut, onUpdateUser, apiErrors, isOK }) => {
             <button
               type="submit"
               className="profile-form__button profile-form__button-save"
-              disabled={!isValid}
+              disabled={
+                !isValid ||
+                (values.name === currentUser.name &&
+                  values.email === currentUser.email)
+              }
             >
               Сохранить
             </button>
@@ -107,6 +124,7 @@ const Profile = ({ onSignOut, onUpdateUser, apiErrors, isOK }) => {
               onClick={(e) => {
                 e.preventDefault();
                 setShowSaveBtn(true);
+                setShowSuccessMsg(false);
               }}
             >
               Редактировать
