@@ -2,8 +2,9 @@ import React from 'react';
 import './MoviesCard.css';
 import { getHoursAndMinutes } from '../../utils/convertMinutes.js';
 import { useLocation } from 'react-router-dom';
+import { BEATFILM_URL } from '../../utils/constants';
 
-const MoviesCard = ({ movie }) => {
+const MoviesCard = ({ movie, onSaveMovie }) => {
   let location = useLocation();
   const isLikeButton = location.pathname === '/movies';
   const isDeleteButton = location.pathname === '/saved-movies';
@@ -18,7 +19,7 @@ const MoviesCard = ({ movie }) => {
       >
         <img
           className="moviescard__image"
-          src={`https://api.nomoreparties.co${movie.image.url}`}
+          src={`${BEATFILM_URL}${movie.image.url}`}
           alt={movie.nameRU}
         />
       </a>
@@ -30,6 +31,7 @@ const MoviesCard = ({ movie }) => {
         </p>
         {isLikeButton && (
           <button
+            onClick={() => onSaveMovie(movie)}
             className={`moviescard__like-btn ${
               movie.isLiked ? ' moviescard__like-btn_liked' : ''
             }`}

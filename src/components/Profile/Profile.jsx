@@ -50,7 +50,7 @@ const Profile = ({ onSignOut, onUpdateUser, apiErrors, isOK }) => {
             placeholder="Введите имя"
             minLength="2"
             maxLength="40"
-            disabled={!showSaveBtn && isOK}
+            disabled={!showSaveBtn}
             required
           />
           <span
@@ -76,7 +76,7 @@ const Profile = ({ onSignOut, onUpdateUser, apiErrors, isOK }) => {
             placeholder="Введите почту"
             minLength="2"
             maxLength="40"
-            disabled={!showSaveBtn && isOK}
+            disabled={!showSaveBtn}
             required
           />
           <span
@@ -112,7 +112,8 @@ const Profile = ({ onSignOut, onUpdateUser, apiErrors, isOK }) => {
               disabled={
                 !isValid ||
                 (values.name === currentUser.name &&
-                  values.email === currentUser.email)
+                  values.email === currentUser.email) ||
+                !validateEmail(values.email)
               }
             >
               Сохранить

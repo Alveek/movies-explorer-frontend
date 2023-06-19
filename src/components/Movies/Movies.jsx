@@ -3,7 +3,7 @@ import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
-const Movies = ({ movies }) => {
+const Movies = ({ movies, onSaveMovie }) => {
   const [filteredMovies, setFilteredMovies] = useState([]);
 
   const filterMovies = (searchParams) => {
@@ -31,7 +31,7 @@ const Movies = ({ movies }) => {
   return (
     <section className="movies">
       <SearchForm onFilter={filterMovies} />
-      <MoviesCardList movies={filteredMovies} />
+      <MoviesCardList movies={filteredMovies} onSaveMovie={onSaveMovie}/>
       <button className="movies__more-btn">Ещё</button>
     </section>
   );

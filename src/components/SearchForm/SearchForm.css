@@ -1,9 +1,9 @@
 .search {
-  padding: 45px 0 69px;
+  padding: 45px 0 116px;
   border-bottom: 1px solid #e8e8e8;
 }
 
-.search__form {
+.search-form {
   display: flex;
   align-items: center;
   padding: 0 30px;
@@ -12,7 +12,12 @@
   min-height: 72px;
 }
 
-.search__form-input {
+.search-form__input-field {
+  position: relative;
+  width: 100%;
+}
+
+.search-form__input {
   border: none;
   width: 100%;
   display: block;
@@ -22,29 +27,46 @@
     no-repeat 4px 11px;
 }
 
-.search__form-input::placeholder {
+.search-form__input::placeholder {
   font-size: 18px;
   line-height: 20px;
 }
 
-.search__form-button {
+.search-form__button {
   all: unset;
   height: 34px;
   margin-right: 19px;
   cursor: pointer;
 }
 
-.search__form-button:hover {
+.search-form__button:disabled {
+  background: #f8f8f8;
+  color: #c2c2c2;
+}
+
+.search-form__input-error {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  position: absolute;
+  left: 33px;
+  top: 36px;
+  max-width: 410px;
+  /* margin: 16px 0 0; */
+  color: #ee3465;
+}
+
+.search-form__button:hover {
   opacity: 0.8;
 }
 
-.search__form-button:focus {
+.search-form__button:focus {
   outline: 2px solid black;
   border-radius: 50px;
 }
 
 @media screen and (max-width: 768px) {
-  .search__form {
+  .search-form {
     padding: 0 21px;
   }
 
@@ -52,11 +74,11 @@
     padding: 60px 0 109px;
   }
 
-  .search__form-button {
+  .search-form__button {
     margin-right: 19px;
   }
 
-  .search__form-input {
+  .search-form__input {
     padding: 7px 4px 9px 41px;
     margin-right: 10px;
     background: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 13 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.79268 8.2638C6.36075 9.69572 4.03915 9.69572 2.60723 8.2638C1.1753 6.83188 1.1753 4.51027 2.60723 3.07835C4.03915 1.64643 6.36075 1.64643 7.79268 3.07835C9.2246 4.51027 9.2246 6.83188 7.79268 8.2638ZM8.23306 9.64676C6.27283 11.1462 3.45724 10.9994 1.66442 9.20661C-0.288204 7.25399 -0.288204 4.08816 1.66442 2.13554C3.61704 0.182918 6.78286 0.182918 8.73549 2.13554C10.5282 3.92829 10.675 6.74371 9.17584 8.70392L12.7425 12.2706L11.7997 13.2134L8.23306 9.64676Z' fill='%23959595'/%3E%3C/svg%3E%0A")
@@ -65,22 +87,26 @@
 }
 
 @media screen and (max-width: 600px) {
-  .search__form {
+  .search-form {
     position: relative;
   }
 
-  .search__form-input::placeholder {
+  .search-form__input::placeholder {
     font-size: 14px;
     line-height: 20px;
   }
 
-  .search__form-input {
+  .search-form__input {
     padding: 7px 4px 9px 0;
     margin-right: 10px;
     background: none;
   }
 
-  .search__form-button {
+  .search-form__button {
     margin-right: 0;
+  }
+
+  .search-form__input-error {
+    left: 0px;
   }
 }

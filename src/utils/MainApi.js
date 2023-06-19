@@ -1,3 +1,5 @@
+import { BEATFILM_URL } from './constants';
+
 export default class MainApi {
   constructor({ url, headers }) {
     this._url = url;
@@ -32,6 +34,33 @@ export default class MainApi {
         name: data.name,
         email: data.email
       }),
+      headers: this._headers
+    }).then((res) => this._checkResponse(res));
+  }
+
+  saveMovie(movie) {
+    return fetch(`${this._url}/movies`, {
+      method: 'POST',
+      body: JSON.stringify({
+        country: movie.country,
+        director: movie.director,
+        duration: movie.duration,
+        year: movie.year,
+        description: movie.description,
+        image: `${BEATFILM_URL}${movie.image.url}`,
+        trailerLink: movie.trailerLink,
+        thumbnail: `${BEATFILM_URL}${movie.image.formats.thumbnail.url}`,
+        movieId: movie.id,
+        nameRU: movie.nameRU,
+        nameEN: movie.nameEN
+      }),
+      headers: this._headers
+    }).then((res) => this._checkResponse(res));
+  }
+
+  deleteCard(movieId) {
+    return fetch(`${this._url}/movies/${movieId}`, {
+      method: 'DELETE',
       headers: this._headers
     }).then((res) => this._checkResponse(res));
   }

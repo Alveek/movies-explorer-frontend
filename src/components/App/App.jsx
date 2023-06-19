@@ -37,7 +37,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [movies, setMovies] = useState([]);
 
-  console.log(apiErrors);
+  // console.log(movies);
 
   const mainApi = new MainApi({
     url: 'http://localhost:3000',
@@ -46,6 +46,12 @@ function App() {
       authorization: `Bearer ${localStorage.getItem('jwt')}`
     }
   });
+
+  useEffect(() => {
+    moviesApi.getMovies().then((movies) => {
+      setMovies(movies);
+    });
+  }, []);
 
   // очистка ошибок при переходе на другие страницы
   useEffect(() => {
@@ -139,13 +145,17 @@ function App() {
     setIsLoggedIn(false);
   };
 
+  const handleSaveMovie = (movie) => {
+    console.log(movie);
+    mainApi.saveMovie(movie);
+  };
+
   return (
     <div className="App">
       <CurrentUserContext.Provider value={{ currentUser }}>
         {headerPaths.includes(location.pathname) && (
           <Header isLoggedIn={isLoggedIn} />
         )}
-        {isLoading && <Preloader />}
         <main>
           <Routes>
             <Route path="/" element={<Main />} />
@@ -179,6 +189,7 @@ function App() {
                   element={Movies}
                   isLoggedIn={isLoggedIn}
                   movies={movies}
+                  onSaveMovie={handleSaveMovie}
                 />
               }
             />
