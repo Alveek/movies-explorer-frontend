@@ -38,6 +38,12 @@ export default class MainApi {
     }).then((res) => this._checkResponse(res));
   }
 
+  getSavedMovies() {
+    return fetch(`${this._url}/movies`, { headers: this._headers }).then(
+      (res) => this._checkResponse(res)
+    );
+  }
+
   saveMovie(movie) {
     return fetch(`${this._url}/movies`, {
       method: 'POST',
@@ -58,8 +64,8 @@ export default class MainApi {
     }).then((res) => this._checkResponse(res));
   }
 
-  deleteCard(movieId) {
-    return fetch(`${this._url}/movies/${movieId}`, {
+  deleteMovie(id) {
+    return fetch(`${this._url}/movies/${id}`, {
       method: 'DELETE',
       headers: this._headers
     }).then((res) => this._checkResponse(res));

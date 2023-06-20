@@ -4,10 +4,13 @@ import { getHoursAndMinutes } from '../../utils/convertMinutes.js';
 import { useLocation } from 'react-router-dom';
 import { BEATFILM_URL } from '../../utils/constants';
 
-const MoviesCard = ({ movie, onSaveMovie }) => {
+const MoviesCard = ({ movie, onSaveMovie, onDeleteMovie }) => {
   let location = useLocation();
   const isLikeButton = location.pathname === '/movies';
   const isDeleteButton = location.pathname === '/saved-movies';
+  const imageUrl = movie.image.url
+    ? `${BEATFILM_URL}${movie.image.url}`
+    : movie.image;
 
   return (
     <li className="moviescard">
@@ -17,11 +20,7 @@ const MoviesCard = ({ movie, onSaveMovie }) => {
         target="_blank"
         rel="noreferrer"
       >
-        <img
-          className="moviescard__image"
-          src={`${BEATFILM_URL}${movie.image.url}`}
-          alt={movie.nameRU}
-        />
+        <img className="moviescard__image" src={imageUrl} alt={movie.nameRU} />
       </a>
 
       <div className="moviescard__details">
@@ -39,7 +38,10 @@ const MoviesCard = ({ movie, onSaveMovie }) => {
         )}
 
         {isDeleteButton && (
-          <button className={`moviescard__delete-btn`}></button>
+          <button
+            onClick={() => onDeleteMovie(movie._id)}
+            className={`moviescard__delete-btn`}
+          ></button>
         )}
       </div>
     </li>

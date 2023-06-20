@@ -65,7 +65,7 @@
 
 .moviescard__delete-btn {
   background: no-repeat center/contain url('../../images/icon-close.svg');
-  display: none;
+  /* display: none; */
   padding: 0;
   margin: 0;
   width: 14px;

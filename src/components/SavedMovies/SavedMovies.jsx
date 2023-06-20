@@ -2,13 +2,13 @@ import React from 'react';
 import './SavedMovies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import { moviesData } from '../../utils/movies.js';
+// import { moviesData } from '../../utils/movies.js';
 
-const SavedMovies = () => {
+const SavedMovies = ({ savedMovies, onDeleteMovie }) => {
   return (
     <section className="saved-movies">
       <SearchForm />
-      <MoviesCardList movies={moviesData} />
+      <MoviesCardList movies={savedMovies} onDeleteMovie={onDeleteMovie} />
     </section>
   );
 };
