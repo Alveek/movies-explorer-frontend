@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import Logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
-import { validateEmail } from '../../utils/helpers';
+import { validateEmail } from '../../utils/validateEmail';
 
 const Login = ({ onLogin, isLoggedIn, apiErrors }) => {
   const { values, handleChange, errors, isValid } = useFormAndValidation();
@@ -35,6 +35,7 @@ const Login = ({ onLogin, isLoggedIn, apiErrors }) => {
           <label className="form__label" htmlFor="user-email-input">
             E-mail
           </label>
+
           <input
             className="form__input"
             id="user-email-input"
@@ -47,12 +48,9 @@ const Login = ({ onLogin, isLoggedIn, apiErrors }) => {
             maxLength="40"
             required
           />
+
           <span className={`form__input-error form__input-error_active`}>
-            {values.email?.length === 0
-              ? 'Это поле не должно быть пустым!'
-              : values.email?.length > 0 && !validateEmail(values.email)
-              ? 'Неверный формат почты!'
-              : ''}
+            {validateEmail(values.email).message}
           </span>
         </div>
 
@@ -60,6 +58,7 @@ const Login = ({ onLogin, isLoggedIn, apiErrors }) => {
           <label className="form__label" htmlFor="user-password-input">
             Пароль
           </label>
+
           <input
             className="form__input"
             id="user-password-input"
@@ -71,6 +70,7 @@ const Login = ({ onLogin, isLoggedIn, apiErrors }) => {
             minLength="1"
             required
           />
+
           <span
             className={`form__input-error ${
               isValid ? '' : 'form__input-error_active'
@@ -85,7 +85,7 @@ const Login = ({ onLogin, isLoggedIn, apiErrors }) => {
         <button
           type="submit"
           className="form__btn"
-          disabled={!isValid || !validateEmail(values.email)}
+          disabled={!isValid || validateEmail(values.email).invalid}
         >
           Войти
         </button>

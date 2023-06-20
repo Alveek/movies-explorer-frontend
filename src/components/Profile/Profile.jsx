@@ -2,7 +2,7 @@ import './Profile.css';
 import { useContext, useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
-import { validateEmail } from '../../utils/helpers';
+import { validateEmail } from '../../utils/validateEmail';
 
 const Profile = ({ onSignOut, onUpdateUser, apiErrors, isOK }) => {
   const { values, handleChange, errors, isValid, setValues, setIsValid } =
@@ -84,11 +84,7 @@ const Profile = ({ onSignOut, onUpdateUser, apiErrors, isOK }) => {
               'profile-form__input-error profile-form__input-error_active'
             }
           >
-            {values.email?.length === 0
-              ? 'Это поле не должно быть пустым!'
-              : values.email?.length > 0 && !validateEmail(values.email)
-              ? 'Неверный формат почты!'
-              : ''}
+            {validateEmail(values.email).message}
           </span>
         </div>
 
@@ -113,7 +109,7 @@ const Profile = ({ onSignOut, onUpdateUser, apiErrors, isOK }) => {
                 !isValid ||
                 (values.name === currentUser.name &&
                   values.email === currentUser.email) ||
-                !validateEmail(values.email)
+                validateEmail(values.email).invalid
               }
             >
               Сохранить

@@ -24,8 +24,6 @@ const SearchForm = ({ onFilter }) => {
         }}
       >
         <div className="search-form__input-field">
-          {' '}
-          тп
           <input
             className="search-form__input"
             name="search"

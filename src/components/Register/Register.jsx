@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
+import './Register.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import Logo from '../../images/logo.svg';
-import { validateEmail } from '../../utils/helpers';
-import './Register.css';
+import { validateEmail } from '../../utils/validateEmail';
 
 const Register = ({ onRegister, isLoggedIn, apiErrors }) => {
   const { values, handleChange, errors, isValid } = useFormAndValidation();
@@ -73,11 +73,7 @@ const Register = ({ onRegister, isLoggedIn, apiErrors }) => {
             required
           />
           <span className={`form__input-error form__input-error_active`}>
-            {values.email?.length === 0
-              ? 'Это поле не должно быть пустым!'
-              : values.email?.length > 0 && !validateEmail(values?.email)
-              ? 'Неверный формат почты!'
-              : ''}
+            {validateEmail(values.email).message}
           </span>
         </div>
 
@@ -111,7 +107,7 @@ const Register = ({ onRegister, isLoggedIn, apiErrors }) => {
         <button
           type="submit"
           className="register-form__btn"
-          disabled={!isValid}
+          disabled={!isValid || validateEmail(values.email).invalid}
         >
           Зарегистрироваться
         </button>
