@@ -4,7 +4,7 @@ import './Register.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import Logo from '../../images/logo.svg';
-import { validateEmail } from '../../utils/validateEmail';
+import { validateEmail, validateName } from '../../utils/validation';
 
 const Register = ({ onRegister, isLoggedIn, apiErrors }) => {
   const { values, handleChange, errors, isValid } = useFormAndValidation();
@@ -47,12 +47,8 @@ const Register = ({ onRegister, isLoggedIn, apiErrors }) => {
             maxLength="40"
             required
           />
-          <span
-            className={`register-form__input-error ${
-              isValid ? '' : 'register-form__input-error_active'
-            }`}
-          >
-            {errors.name}
+          <span className={`register-form__input-error`}>
+            {validateName(values.name).message}
           </span>
         </div>
 
@@ -107,7 +103,11 @@ const Register = ({ onRegister, isLoggedIn, apiErrors }) => {
         <button
           type="submit"
           className="register-form__btn"
-          disabled={!isValid || validateEmail(values.email).invalid}
+          disabled={
+            !isValid ||
+            validateEmail(values.email).invalid ||
+            validateName(values.name).invalid
+          }
         >
           Зарегистрироваться
         </button>

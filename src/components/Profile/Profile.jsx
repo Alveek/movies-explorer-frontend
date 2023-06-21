@@ -2,7 +2,7 @@ import './Profile.css';
 import { useContext, useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
-import { validateEmail } from '../../utils/validateEmail';
+import { validateEmail, validateName } from '../../utils/validation';
 
 const Profile = ({ onSignOut, onUpdateUser, apiErrors, isOK }) => {
   const { values, handleChange, errors, isValid, setValues, setIsValid } =
@@ -53,12 +53,8 @@ const Profile = ({ onSignOut, onUpdateUser, apiErrors, isOK }) => {
             disabled={!showSaveBtn}
             required
           />
-          <span
-            className={`profile-form__input-error ${
-              isValid ? '' : 'profile-form__input-error_active'
-            }`}
-          >
-            {errors.name}
+          <span className={`profile-form__input-error`}>
+            {validateName(values.name).message}
           </span>
         </div>
 
@@ -109,7 +105,8 @@ const Profile = ({ onSignOut, onUpdateUser, apiErrors, isOK }) => {
                 !isValid ||
                 (values.name === currentUser.name &&
                   values.email === currentUser.email) ||
-                validateEmail(values.email).invalid
+                validateEmail(values.email).invalid ||
+                validateName(values.name).invalid
               }
             >
               Сохранить

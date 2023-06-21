@@ -1,13 +1,12 @@
 import React from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import useResize from '../../hooks/useResize.js';
 
 const MoviesCardList = ({ movies, onSaveMovie, onDeleteMovie }) => {
   let size = useResize();
-  let location = useLocation();
-  console.log(movies);
+  // let location = useLocation();
 
   // movies =
   //   location.pathname === '/saved-movies'

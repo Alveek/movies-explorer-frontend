@@ -97,6 +97,7 @@ function App() {
     isLoggedIn &&
       mainApi.getSavedMovies().then((data) => {
         setSavedMovies(data);
+        localStorage.setItem('savedMovies', JSON.stringify(data));
       });
 
     console.log(savedMovies);
@@ -157,18 +158,23 @@ function App() {
     setIsLoggedIn(false);
   };
 
-  const handleSaveMovie = (movie) => {
-    console.log(movie);
-    mainApi.saveMovie(movie);
+  const handleSaveMovie = (movie, isLiked, id) => {
+    if (isLiked) {
+      handleDeleteMovie(id);
+    } else {
+      mainApi.saveMovie(movie);
+    }
+    // console.log(movie, isLiked, id);
   };
 
   const handleDeleteMovie = (id) => {
     console.log(id);
-    // mainApi.deleteMovie(id);
+    mainApi.deleteMovie(id).then((res) => console.log(res));
   };
 
   return (
     <div className="App">
+      {/* Пока проверяется токен, покажи мне прикольный лоудер, а не мелькай главную страницу */}
       {isLoading ? (
         <PageLoader />
       ) : (
