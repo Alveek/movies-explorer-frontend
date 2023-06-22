@@ -5,7 +5,7 @@ import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import { validateEmail, validateName } from '../../utils/validation';
 
 const Profile = ({ onSignOut, onUpdateUser, apiErrors, isOK }) => {
-  const { values, handleChange, errors, isValid, setValues, setIsValid } =
+  const { values, handleChange, isValid, setValues, setIsValid } =
     useFormAndValidation();
   const { currentUser } = useContext(CurrentUserContext);
   const [showSaveBtn, setShowSaveBtn] = useState(false);

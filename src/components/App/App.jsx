@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import MainApi from '../../utils/MainApi';
 import { moviesApi } from '../../utils/MoviesApi';
@@ -90,18 +90,36 @@ function App() {
         });
 
     isLoggedIn &&
-      moviesApi.getMovies().then((movies) => {
-        setMovies(movies);
-      });
-
-    isLoggedIn &&
       mainApi.getSavedMovies().then((data) => {
         setSavedMovies(data);
         localStorage.setItem('savedMovies', JSON.stringify(data));
+        console.log({ savedMovies });
       });
-
-    console.log(savedMovies);
   }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      if (localStorage.getItem('movies')) {
+        setMovies(JSON.parse(localStorage.getItem('movies')));
+        console.log('Взял фильмы из ЛС');
+      } else {
+        moviesApi
+          .getMovies()
+          .then((movies) => {
+            localStorage.setItem('movies', JSON.stringify(movies));
+            setMovies(JSON.parse(localStorage.getItem('movies')));
+            console.log('Сохранил фильмы в ЛС');
+            console.log('сетнул фильмы из ЛС в movies');
+          })
+          .catch((error) => console.log(error));
+      }
+    }
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    isLoggedIn &&
+      localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
+  }, [savedMovies, isLoggedIn]);
 
   const handleLogin = (values) => {
     auth
@@ -158,18 +176,33 @@ function App() {
     setIsLoggedIn(false);
   };
 
-  const handleSaveMovie = (movie, isLiked, id) => {
+  const handleLikeMovie = (movie, isLiked, id) => {
     if (isLiked) {
       handleDeleteMovie(id);
     } else {
-      mainApi.saveMovie(movie);
+      mainApi
+        .saveMovie(movie)
+        .then((res) => {
+          setSavedMovies([...savedMovies, res]);
+          localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
+          console.log(res);
+        })
+        .catch((error) => console.log(error));
     }
-    // console.log(movie, isLiked, id);
   };
 
   const handleDeleteMovie = (id) => {
     console.log(id);
-    mainApi.deleteMovie(id).then((res) => console.log(res));
+    mainApi
+      .deleteMovie(id)
+      .then((res) => {
+        const updatedSavedMovies = savedMovies.filter(
+          (movie) => movie._id !== id
+        );
+        setSavedMovies(updatedSavedMovies);
+        console.log(res);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -215,7 +248,8 @@ function App() {
                     element={Movies}
                     isLoggedIn={isLoggedIn}
                     movies={movies}
-                    onSaveMovie={handleSaveMovie}
+                    savedMovies={savedMovies}
+                    onLikeMovie={handleLikeMovie}
                   />
                 }
               />

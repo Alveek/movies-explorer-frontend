@@ -4,7 +4,12 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 // import { useLocation } from 'react-router-dom';
 import useResize from '../../hooks/useResize.js';
 
-const MoviesCardList = ({ movies, onSaveMovie, onDeleteMovie }) => {
+const MoviesCardList = ({
+  movies,
+  savedMovies,
+  onLikeMovie,
+  onDeleteMovie
+}) => {
   let size = useResize();
   // let location = useLocation();
 
@@ -21,7 +26,8 @@ const MoviesCardList = ({ movies, onSaveMovie, onDeleteMovie }) => {
               <MoviesCard
                 key={movie.id || movie.movieId}
                 movie={movie}
-                onSaveMovie={onSaveMovie}
+                savedMovies={savedMovies}
+                onLikeMovie={onLikeMovie}
                 onDeleteMovie={onDeleteMovie}
               />
             );
@@ -32,7 +38,8 @@ const MoviesCardList = ({ movies, onSaveMovie, onDeleteMovie }) => {
               <MoviesCard
                 key={movie.id || movie.movieId}
                 movie={movie}
-                onSaveMovie={onSaveMovie}
+                savedMovies={savedMovies}
+                onLikeMovie={onLikeMovie}
                 onDeleteMovie={onDeleteMovie}
               />
             );
@@ -42,7 +49,8 @@ const MoviesCardList = ({ movies, onSaveMovie, onDeleteMovie }) => {
               <MoviesCard
                 key={movie.id || movie.movieId}
                 movie={movie}
-                onSaveMovie={onSaveMovie}
+                savedMovies={savedMovies}
+                onLikeMovie={onLikeMovie}
                 onDeleteMovie={onDeleteMovie}
               />
             );
