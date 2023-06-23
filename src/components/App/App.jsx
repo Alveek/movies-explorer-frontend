@@ -116,6 +116,7 @@ function App() {
     }
   }, [isLoggedIn]);
 
+  // Если savedMovies изменяется, сохрани в ЛС новую версию
   useEffect(() => {
     isLoggedIn &&
       localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
@@ -184,7 +185,7 @@ function App() {
         .saveMovie(movie)
         .then((res) => {
           setSavedMovies([...savedMovies, res]);
-          localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
+          // localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
           console.log(res);
         })
         .catch((error) => console.log(error));

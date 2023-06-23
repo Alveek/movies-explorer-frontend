@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
 const Movies = ({ movies, savedMovies, onLikeMovie }) => {
   const [filteredMovies, setFilteredMovies] = useState([]);
+  const [searchedMovies, setSearchedMovies] = useState(
+    localStorage.getItem('searchedMovies') || []
+  );
 
+  useEffect(() => {
+    if (searchedMovies) {
+      setFilteredMovies(searchedMovies);
+    }
+  }, [searchedMovies, filteredMovies]);
+
+  console.log({ filteredMovies });
   const filterMovies = (searchParams) => {
     let filtered = [];
     if (searchParams.isShortFilmChecked) {
@@ -16,13 +26,15 @@ const Movies = ({ movies, savedMovies, onLikeMovie }) => {
         );
       });
       setFilteredMovies(filtered);
+      localStorage.setItem('searchedMovies', JSON.stringify(filteredMovies));
+      setSearchedMovies(filteredMovies);
     } else if (!searchParams.isShortFilmChecked) {
       filtered = movies.filter((m) => {
         return m.nameRU.toLowerCase().trim().includes(searchParams.searchText);
       });
       setFilteredMovies(filtered);
-    } else {
-      setFilteredMovies(movies);
+      localStorage.setItem('searchedMovies', JSON.stringify(filteredMovies));
+      setSearchedMovies(filteredMovies);
     }
 
     console.log(searchParams);
@@ -31,7 +43,6 @@ const Movies = ({ movies, savedMovies, onLikeMovie }) => {
   return (
     <section className="movies">
       <SearchForm onFilter={filterMovies} />
-      {/* Временно пока все фильмы отображаю */}
       <MoviesCardList
         movies={filteredMovies}
         savedMovies={savedMovies}

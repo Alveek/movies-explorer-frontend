@@ -4,7 +4,7 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import IconFind from '../../images/find.svg';
 
-const SearchForm = ({ onFilter, onGetMovies }) => {
+const SearchForm = ({ onFilter }) => {
   const { values, handleChange, errors } = useFormAndValidation();
   const [error, setError] = useState('');
   const isChecked = JSON.parse(localStorage.getItem('filterCheckBox'));
