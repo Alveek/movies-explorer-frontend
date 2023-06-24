@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import './App.css';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import MainApi from '../../utils/MainApi';
 import { moviesApi } from '../../utils/MoviesApi';
@@ -19,7 +19,8 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import PageLoader from '../PageLoader/PageLoader';
 
-// Привет, незнакомец! Прежде чем понять, что я тут написал, запасись вином!
+// Привет! Прежде чем разбираться, чего я тут понаписал, приготовь вина побольше!
+// Без бутылки не разберешься
 // (Магистр сдобной булки посоветовала)
 
 function App() {
@@ -104,15 +105,12 @@ function App() {
     if (isLoggedIn) {
       if (localStorage.getItem('movies')) {
         setMovies(JSON.parse(localStorage.getItem('movies')));
-        console.log('Взял фильмы из ЛС');
       } else {
         moviesApi
           .getMovies()
           .then((movies) => {
             localStorage.setItem('movies', JSON.stringify(movies));
             setMovies(JSON.parse(localStorage.getItem('movies')));
-            console.log('Сохранил фильмы в ЛС');
-            console.log('сетнул фильмы из ЛС в movies');
           })
           .catch((error) => console.log(error));
       }
@@ -220,8 +218,6 @@ function App() {
             JSON.stringify(updatedSearchedSavedMovies)
           );
         }
-
-        console.log(res);
       })
       .catch((error) => console.log(error));
   };

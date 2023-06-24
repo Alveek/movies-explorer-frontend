@@ -22,7 +22,6 @@ const SearchForm = ({ onFilter, searchQuery, onResetInput }) => {
   const checkFilterBox = () => {
     if (searchText !== '') {
       setIsShortFilmChecked(!isShortFilmChecked);
-      localStorage.setItem('filterCheckBox', !isShortFilmChecked);
 
       onFilter({
         searchText: searchText,
@@ -30,7 +29,6 @@ const SearchForm = ({ onFilter, searchQuery, onResetInput }) => {
       });
     } else {
       setIsShortFilmChecked(!isShortFilmChecked);
-      localStorage.setItem('filterCheckBox', !isShortFilmChecked);
 
       onFilter({
         searchText: searchQuery.searchText,
@@ -63,16 +61,18 @@ const SearchForm = ({ onFilter, searchQuery, onResetInput }) => {
             onChange={handleChange}
           />
 
-          <button
-            className="search-form__reset-button"
-            type="button"
-            onClick={() => {
-              onResetInput();
-              setSearchText('');
-            }}
-          >
-            Сброс
-          </button>
+          {searchText && (
+            <button
+              className="search-form__reset-button"
+              type="button"
+              onClick={() => {
+                onResetInput();
+                setSearchText('');
+              }}
+            >
+              Сброс
+            </button>
+          )}
 
           <span className={`search-form__input-error`}>
             {!searchText && error}

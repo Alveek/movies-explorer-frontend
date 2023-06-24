@@ -61,7 +61,16 @@ const SavedMovies = ({ savedMovies, onDeleteMovie }) => {
         searchQuery={searchQuery}
         onResetInput={handleResetInput}
       />
-      <MoviesCardList movies={filteredMovies} onDeleteMovie={onDeleteMovie} />
+
+      {filteredMovies.length ? (
+        <MoviesCardList movies={filteredMovies} onDeleteMovie={onDeleteMovie} />
+      ) : (
+        searchedMovies && (
+          <p className="movies__not-found">
+            По вашему запросу ничего не найдено
+          </p>
+        )
+      )}
     </section>
   );
 };
