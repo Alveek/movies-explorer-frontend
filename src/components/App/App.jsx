@@ -120,6 +120,8 @@ function App() {
   }, [isLoggedIn]);
 
   // Если savedMovies изменяется, сохрани в ЛС новую версию
+  // savedMovies важно тянуть из App для правильной работы стейта лайка и дизлайка
+  // Когда здесь savedMovies обновляется, в CardMovie также обновляется isLiked
   useEffect(() => {
     isLoggedIn &&
       localStorage.setItem('savedMovies', JSON.stringify(savedMovies));

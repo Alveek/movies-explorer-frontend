@@ -9,22 +9,28 @@ const Movies = ({ movies, savedMovies, onLikeMovie }) => {
   const queries = localStorage.getItem('searchQueryMovies');
   const [searchQuery, setSearchQuery] = useState({});
 
+  // Если в ЛС есть история поиска фильмов, отобрази их
   useEffect(() => {
     if (searchedMovies) {
       setFilteredMovies(JSON.parse(searchedMovies));
     }
   }, [searchedMovies]);
 
+  // Если в ЛС есть история запросов (текст и ЧБ), подставь их
   useEffect(() => {
     if (queries) {
       setSearchQuery(JSON.parse(queries));
     }
   }, [queries]);
 
+  // это фунция пробрасывается в Search, откуда при сабмите принимает ключевое слово и стейт ЧБ
+  // затем фильтрует фильмы и результат уже пробрасывается в MoviesCardList
   const filterMovies = (query) => {
+    // Каждый раз при сабмите сохраняй в ЛС ключевое слово и стейт ЧБ
     localStorage.setItem('searchQueryMovies', JSON.stringify(query));
 
     let filtered = [];
+
     if (query.isShortFilmChecked) {
       filtered = movies.filter((m) => {
         return (
@@ -32,6 +38,7 @@ const Movies = ({ movies, savedMovies, onLikeMovie }) => {
           m.nameRU.toLowerCase().trim().includes(query.searchText)
         );
       });
+
       setFilteredMovies(filtered);
       localStorage.setItem('searchedMovies', JSON.stringify(filtered));
     } else if (!query.isShortFilmChecked) {
@@ -43,6 +50,7 @@ const Movies = ({ movies, savedMovies, onLikeMovie }) => {
     }
   };
 
+  // Сброс ключевого слова в инпуте и истории поиска
   const handleResetInput = () => {
     setFilteredMovies([]);
     setSearchQuery({});
