@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import './MoviesCard.css';
 import { getHoursAndMinutes } from '../../utils/convertMinutes.js';
 import { useLocation } from 'react-router-dom';
@@ -6,7 +5,6 @@ import { BEATFILM_URL } from '../../utils/constants';
 
 const MoviesCard = ({ movie, savedMovies, onLikeMovie, onDeleteMovie }) => {
   let location = useLocation();
-  // const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
   const isLikeButton = location.pathname === '/movies';
   const savedMovie = savedMovies
     ? savedMovies.find((item) => item.movieId === movie.id)
@@ -15,14 +13,9 @@ const MoviesCard = ({ movie, savedMovies, onLikeMovie, onDeleteMovie }) => {
   const imageUrl = movie.image.url
     ? `${BEATFILM_URL}${movie.image.url}`
     : movie.image;
-  // const isLiked = savedMovies.some((item) => item.movieId === movie.id);
   const isLiked = savedMovies
     ? savedMovies.some((i) => i.movieId === movie.id)
     : false;
-
-  useEffect(() => {
-    console.log();
-  }, []);
 
   return (
     <li className="moviescard">

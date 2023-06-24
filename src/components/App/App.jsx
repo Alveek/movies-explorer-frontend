@@ -19,6 +19,9 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import PageLoader from '../PageLoader/PageLoader';
 
+// Привет, незнакомец! Прежде чем понять, что я тут написал, запасись вином!
+// (Магистр сдобной булки посоветовала)
+
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -93,7 +96,7 @@ function App() {
       mainApi.getSavedMovies().then((data) => {
         setSavedMovies(data);
         localStorage.setItem('savedMovies', JSON.stringify(data));
-        console.log({ savedMovies });
+        // console.log({ savedMovies });
       });
   }, [isLoggedIn]);
 
@@ -172,7 +175,7 @@ function App() {
   };
 
   const handleSignOut = () => {
-    localStorage.removeItem('jwt');
+    localStorage.clear();
     navigate('/');
     setIsLoggedIn(false);
   };
@@ -185,7 +188,6 @@ function App() {
         .saveMovie(movie)
         .then((res) => {
           setSavedMovies([...savedMovies, res]);
-          // localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
           console.log(res);
         })
         .catch((error) => console.log(error));
@@ -193,7 +195,10 @@ function App() {
   };
 
   const handleDeleteMovie = (id) => {
-    console.log(id);
+    const searchedSavedMovies = JSON.parse(
+      localStorage.getItem('searchedSavedMovies')
+    );
+
     mainApi
       .deleteMovie(id)
       .then((res) => {
@@ -201,6 +206,19 @@ function App() {
           (movie) => movie._id !== id
         );
         setSavedMovies(updatedSavedMovies);
+
+        // Чтобы обновить список фильмов в searchedSavedMovies при удалении или лайке-дизлайке
+        if (searchedSavedMovies) {
+          const updatedSearchedSavedMovies = searchedSavedMovies.filter(
+            (movie) => movie._id !== id
+          );
+
+          localStorage.setItem(
+            'searchedSavedMovies',
+            JSON.stringify(updatedSearchedSavedMovies)
+          );
+        }
+
         console.log(res);
       })
       .catch((error) => console.log(error));
