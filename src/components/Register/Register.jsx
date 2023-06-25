@@ -96,7 +96,9 @@ const Register = ({ onRegister, isLoggedIn, apiErrors }) => {
             {errors.password}
           </span>
           <span className="register-form__api-error">
-            {apiErrors.register.errorText}
+            {apiErrors.register.message === 'Failed to fetch'
+              ? 'При регистрации пользователя произошла ошибка.'
+              : apiErrors.register.errorText}
           </span>
         </div>
 

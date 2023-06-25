@@ -79,7 +79,11 @@ const Login = ({ onLogin, isLoggedIn, apiErrors }) => {
             {errors.password}
           </span>
 
-          <span className="form__api-error">{apiErrors.login.errorText}</span>
+          <span className="form__api-error">
+            {apiErrors.login.message === 'Failed to fetch'
+              ? 'При авторизации произошла ошибка.'
+              : apiErrors.login.errorText}
+          </span>
         </div>
 
         <button

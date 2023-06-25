@@ -87,7 +87,7 @@ const Movies = ({ movies, savedMovies, onLikeMovie, apiErrors }) => {
         apiErrors={apiErrors}
       />
 
-      {apiErrors.movies ? (
+      {apiErrors?.movies && Object.keys(apiErrors?.movies).length !== 0 ? (
         <p className="movies__api-error">
           Во время запроса произошла ошибка. Возможно, проблема с соединением
           или сервер недоступен. Подождите немного и попробуйте ещё раз

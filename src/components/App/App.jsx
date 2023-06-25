@@ -45,7 +45,8 @@ function App() {
   const mainApi = new MainApi({
     // обратите внимание, чтобы здесь и в классе ключ url назывались одинаково,
     // а не так, что здесь baseUrl, а в классе - url ;)
-    url: 'http://localhost:3000',
+    // url: 'http://localhost:3000',
+    url: 'https://api.ak-movies-explorer.nomoredomains.monster',
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${localStorage.getItem('jwt')}`
@@ -95,11 +96,13 @@ function App() {
         });
 
     isLoggedIn &&
-      mainApi.getSavedMovies().then((data) => {
-        setSavedMovies(data);
-        localStorage.setItem('savedMovies', JSON.stringify(data));
-        // console.log({ savedMovies });
-      });
+      mainApi
+        .getSavedMovies()
+        .then((data) => {
+          setSavedMovies(data);
+          localStorage.setItem('savedMovies', JSON.stringify(data));
+        })
+        .catch((error) => console.log(error));
   }, [isLoggedIn]);
 
   // Получение фильмов. Если они уже есть в ЛС, сетни их оттуда, если нет - запрос к апи.

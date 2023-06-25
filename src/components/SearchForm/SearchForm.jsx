@@ -50,7 +50,7 @@ const SearchForm = ({ onFilter, searchQuery, onResetInput, apiErrors }) => {
 
   return (
     <div className="search">
-      <form className="search-form" onSubmit={handleSubmit} disabled>
+      <form className="search-form" onSubmit={handleSubmit}>
         <div className="search-form__input-field">
           <input
             className="search-form__input"
@@ -79,11 +79,7 @@ const SearchForm = ({ onFilter, searchQuery, onResetInput, apiErrors }) => {
           </span>
         </div>
 
-        <button
-          type="submit"
-          className="search-form__button"
-          disabled={apiErrors?.movies}
-        >
+        <button type="submit" className="search-form__button">
           <img src={IconFind} alt="Изображение иконки поиска" />
         </button>
 
