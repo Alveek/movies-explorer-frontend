@@ -8,7 +8,7 @@ import Preloader from '../Preloader/Preloader';
 // что-то из этого можно перенести в App, но тогда там нужно будет писать
 // кучу условий и проверок отдельно для movies и savedMovies
 
-const Movies = ({ movies, savedMovies, onLikeMovie }) => {
+const Movies = ({ movies, savedMovies, onLikeMovie, apiErrors }) => {
   const [filteredMovies, setFilteredMovies] = useState([]);
   const searchedMovies = localStorage.getItem('searchedMovies');
   const queries = localStorage.getItem('searchQueryMovies');
@@ -84,7 +84,17 @@ const Movies = ({ movies, savedMovies, onLikeMovie }) => {
         onFilter={filterMovies}
         searchQuery={searchQuery}
         onResetInput={handleResetInput}
+        apiErrors={apiErrors}
       />
+
+      {apiErrors.movies ? (
+        <p className="movies__api-error">
+          Во время запроса произошла ошибка. Возможно, проблема с соединением
+          или сервер недоступен. Подождите немного и попробуйте ещё раз
+        </p>
+      ) : (
+        ''
+      )}
 
       {isLoading ? (
         <Preloader />

@@ -3,7 +3,7 @@ import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import IconFind from '../../images/find.svg';
 
-const SearchForm = ({ onFilter, searchQuery, onResetInput }) => {
+const SearchForm = ({ onFilter, searchQuery, onResetInput, apiErrors }) => {
   const [searchText, setSearchText] = useState('');
   const [error, setError] = useState('');
   const isChecked = JSON.parse(localStorage.getItem('filterCheckBox'));
@@ -50,7 +50,7 @@ const SearchForm = ({ onFilter, searchQuery, onResetInput }) => {
 
   return (
     <div className="search">
-      <form className="search-form" onSubmit={handleSubmit}>
+      <form className="search-form" onSubmit={handleSubmit} disabled>
         <div className="search-form__input-field">
           <input
             className="search-form__input"
@@ -79,7 +79,11 @@ const SearchForm = ({ onFilter, searchQuery, onResetInput }) => {
           </span>
         </div>
 
-        <button type="submit" className="search-form__button">
+        <button
+          type="submit"
+          className="search-form__button"
+          disabled={apiErrors?.movies}
+        >
           <img src={IconFind} alt="Изображение иконки поиска" />
         </button>
 

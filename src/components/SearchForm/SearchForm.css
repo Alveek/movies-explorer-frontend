@@ -55,8 +55,7 @@
 } */
 
 .search-form__button:disabled {
-  background: #f8f8f8;
-  color: #c2c2c2;
+  filter: grayscale(1);
 }
 
 .search-form__input-error {

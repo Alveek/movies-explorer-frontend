@@ -34,7 +34,8 @@ function App() {
   const [apiErrors, setApiErrors] = useState({
     login: {},
     register: {},
-    profile: {}
+    profile: {},
+    movies: {}
   });
   const [isOK, setIsOK] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -101,6 +102,7 @@ function App() {
       });
   }, [isLoggedIn]);
 
+  // Получение фильмов. Если они уже есть в ЛС, сетни их оттуда, если нет - запрос к апи.
   useEffect(() => {
     if (isLoggedIn) {
       if (localStorage.getItem('movies')) {
@@ -110,9 +112,13 @@ function App() {
           .getMovies()
           .then((movies) => {
             localStorage.setItem('movies', JSON.stringify(movies));
-            setMovies(JSON.parse(localStorage.getItem('movies')));
+            setMovies(movies);
+            setApiErrors({ ...apiErrors, movies: {} });
           })
-          .catch((error) => console.log(error));
+          .catch((error) => {
+            setApiErrors({ ...apiErrors, movies: error });
+            console.log(error);
+          });
       }
     }
   }, [isLoggedIn]);
@@ -267,6 +273,7 @@ function App() {
                     movies={movies}
                     savedMovies={savedMovies}
                     onLikeMovie={handleLikeMovie}
+                    apiErrors={apiErrors}
                   />
                 }
               />
