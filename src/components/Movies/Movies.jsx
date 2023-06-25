@@ -47,7 +47,10 @@ const Movies = ({ movies, savedMovies, onLikeMovie, apiErrors }) => {
           filtered = movies.filter((m) => {
             return (
               m.duration <= 40 &&
-              m.nameRU.toLowerCase().trim().includes(query.searchText)
+              m.nameRU
+                .toLowerCase()
+                .trim()
+                .includes(query.searchText.toLowerCase())
             );
           });
 
@@ -55,7 +58,10 @@ const Movies = ({ movies, savedMovies, onLikeMovie, apiErrors }) => {
           localStorage.setItem('searchedMovies', JSON.stringify(filtered));
         } else if (!query.isShortFilmChecked) {
           filtered = movies.filter((m) => {
-            return m.nameRU.toLowerCase().trim().includes(query.searchText);
+            return m.nameRU
+              .toLowerCase()
+              .trim()
+              .includes(query.searchText.toLowerCase());
           });
 
           setFilteredMovies(filtered);
