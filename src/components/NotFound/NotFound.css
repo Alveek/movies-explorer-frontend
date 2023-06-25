@@ -26,12 +26,18 @@
 }
 
 .not-found-page__back-btn {
+  all: unset;
   color: #2be080;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   text-decoration: none;
   padding-bottom: 90px;
+  cursor: pointer;
+}
+
+.not-found-page__back-btn:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 768px) {

@@ -47,6 +47,11 @@
   line-height: 13px;
 }
 
+.profile-form__input:disabled {
+  background-color: #fff;
+  color: #000;
+}
+
 .profile-form__button {
   border: none;
   background: none;
@@ -56,6 +61,25 @@
   display: block;
   padding: 0;
   margin: 0 auto;
+}
+
+.profile-form__button-save {
+  width: 100%;
+  background: #2be080;
+  border-radius: 3px;
+  border: 0;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  min-height: 45px;
+  margin-top: 180px;
+  cursor: pointer;
+}
+
+.profile-form__button-save:disabled {
+  background: #f8f8f8;
+  color: #c2c2c2;
 }
 
 .profile-form__button-edit {
@@ -78,12 +102,44 @@
   font-size: 10px;
   line-height: 12px;
   position: absolute;
+  right: 0;
   max-width: 410px;
   margin: 16px 0 0;
+  color: #ee3465;
 }
 
 .profile-form__input-error_active {
   color: #ee3465;
+}
+
+.profile-form__buttons {
+  position: relative;
+}
+
+.profile-form__error-message {
+  color: #ee3465;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  position: absolute;
+  top: -35px;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.profile-form__success-message {
+  color: #2be080;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 13px;
+  position: absolute;
+  top: -35px;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {

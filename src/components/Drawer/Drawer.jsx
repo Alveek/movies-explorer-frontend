@@ -32,7 +32,9 @@ const Drawer = ({ isLoggedIn }) => {
       {isOpen && <div className="drawer__overlay" onClick={closeDrawer}></div>}
       <div
         onClick={(e) => (e.target.href ? closeDrawer() : '')}
-        className={`drawer__container ${isOpen ? 'drawer__container_open' : ''}`}
+        className={`drawer__container ${
+          isOpen ? 'drawer__container_open' : ''
+        }`}
       >
         <button className="drawer__close-btn" onClick={closeDrawer}></button>
 

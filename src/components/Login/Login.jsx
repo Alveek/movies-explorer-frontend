@@ -1,14 +1,21 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import Logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
+import { validateEmail } from '../../utils/validation';
 
-const Login = () => {
+const Login = ({ onLogin, isLoggedIn, apiErrors }) => {
   const { values, handleChange, errors, isValid } = useFormAndValidation();
-  const onLogin = (val) => {
-    console.log(val);
-  };
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/movies');
+    }
+  }, [isLoggedIn]);
 
   return (
     <section className="login-page">
@@ -28,6 +35,7 @@ const Login = () => {
           <label className="form__label" htmlFor="user-email-input">
             E-mail
           </label>
+
           <input
             className="form__input"
             id="user-email-input"
@@ -40,12 +48,9 @@ const Login = () => {
             maxLength="40"
             required
           />
-          <span
-            className={`form__input-error ${
-              isValid ? '' : 'form__input-error_active'
-            }`}
-          >
-            {errors.email}
+
+          <span className={`form__input-error form__input-error_active`}>
+            {validateEmail(values.email).message}
           </span>
         </div>
 
@@ -53,6 +58,7 @@ const Login = () => {
           <label className="form__label" htmlFor="user-password-input">
             Пароль
           </label>
+
           <input
             className="form__input"
             id="user-password-input"
@@ -61,10 +67,10 @@ const Login = () => {
             onChange={handleChange}
             type="password"
             placeholder="Введите пароль"
-            minLength="6"
-            maxLength="200"
+            minLength="1"
             required
           />
+
           <span
             className={`form__input-error ${
               isValid ? '' : 'form__input-error_active'
@@ -72,9 +78,19 @@ const Login = () => {
           >
             {errors.password}
           </span>
+
+          <span className="form__api-error">
+            {apiErrors.login.message === 'Failed to fetch'
+              ? 'При авторизации произошла ошибка.'
+              : apiErrors.login.errorText}
+          </span>
         </div>
 
-        <button type="submit" className="form__btn">
+        <button
+          type="submit"
+          className="form__btn"
+          disabled={!isValid || validateEmail(values.email).invalid}
+        >
           Войти
         </button>
 
