@@ -75,6 +75,12 @@ function App() {
           }
         })
         .catch((error) => {
+          // если токен не совпадает с тем, что лежит в ЛС, его надо удалить в ЛС,
+          // иначе, если есть прелоудер - он будет крутиться бесконечно
+          if (error.status === 401) {
+            localStorage.removeItem('jwt');
+            setIsLoading(false);
+          }
           console.log(error);
         });
     } else {
