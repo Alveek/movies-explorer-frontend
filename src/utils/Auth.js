@@ -53,6 +53,6 @@ class Auth {
 }
 
 export const auth = new Auth({
-  url: 'https://api.ak-movies-explorer.nomoredomains.monster'
+  url: 'https://api.movies.alveek.xyz'
   // url: 'http://localhost:3000'
 });

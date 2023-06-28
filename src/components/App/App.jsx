@@ -46,7 +46,7 @@ function App() {
     // обратите внимание, чтобы здесь и в классе ключ url назывались одинаково,
     // а не так, что здесь baseUrl, а в классе - url ;)
     // url: 'http://localhost:3000',
-    url: 'https://api.ak-movies-explorer.nomoredomains.monster',
+    url: 'https://api.movies.alveek.xyz',
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${localStorage.getItem('jwt')}`
